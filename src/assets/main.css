@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "MTS Sans";
+  src: url("fonts/MTSSans-Black.eot");
+  src: url("fonts/MTSSans-Black.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSSans-Black.woff2") format("woff2"),
+    url("fonts/MTSSans-Black.woff") format("woff"),
+    url("fonts/MTSSans-Black.ttf") format("truetype"),
+    url("fonts/MTSSans-Black.svg#MTSSans-Black") format("svg");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Sans UltraWide";
+  src: url("fonts/MTSSans-UltraWide.eot");
+  src: url("fonts/MTSSans-UltraWide.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSSans-UltraWide.woff2") format("woff2"),
+    url("fonts/MTSSans-UltraWide.woff") format("woff"),
+    url("fonts/MTSSans-UltraWide.ttf") format("truetype"),
+    url("fonts/MTSSans-UltraWide.svg#MTSSans-UltraWide") format("svg");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Sans";
+  src: url("fonts/MTSSans-Medium.eot");
+  src: url("fonts/MTSSans-Medium.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSSans-Medium.woff2") format("woff2"),
+    url("fonts/MTSSans-Medium.woff") format("woff"),
+    url("fonts/MTSSans-Medium.ttf") format("truetype"),
+    url("fonts/MTSSans-Medium.svg#MTSSans-Medium") format("svg");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Sans";
+  src: url("fonts/MTSSans-Regular.eot");
+  src: url("fonts/MTSSans-Regular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSSans-Regular.woff2") format("woff2"),
+    url("fonts/MTSSans-Regular.woff") format("woff"),
+    url("fonts/MTSSans-Regular.ttf") format("truetype"),
+    url("fonts/MTSSans-Regular.svg#MTSSans-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Sans";
+  src: url("fonts/MTSSans-Bold.eot");
+  src: url("fonts/MTSSans-Bold.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSSans-Bold.woff2") format("woff2"),
+    url("fonts/MTSSans-Bold.woff") format("woff"),
+    url("fonts/MTSSans-Bold.ttf") format("truetype"),
+    url("fonts/MTSSans-Bold.svg#MTSSans-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Wide";
+  src: url("fonts/MTSWide-Light.eot");
+  src: url("fonts/MTSWide-Light.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSWide-Light.woff2") format("woff2"),
+    url("fonts/MTSWide-Light.woff") format("woff"),
+    url("fonts/MTSWide-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Wide";
+  src: url("fonts/MTSWide-Regular.eot");
+  src: url("fonts/MTSWide-Regular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSWide-Regular.woff2") format("woff2"),
+    url("fonts/MTSWide-Regular.woff") format("woff"),
+    url("fonts/MTSWide-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Wide";
+  src: url("fonts/MTSWide-Medium.eot");
+  src: url("fonts/MTSWide-Medium.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSWide-Medium.woff2") format("woff2"),
+    url("fonts/MTSWide-Medium.woff") format("woff"),
+    url("fonts/MTSWide-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Compact";
+  src: url("fonts/MTSCompact-Medium.eot");
+  src: url("fonts/MTSSans-Medium.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSCompact-Medium.woff2") format("woff2"),
+    url("fonts/MTSCompact-Medium.woff") format("woff"),
+    url("fonts/MTSCompact-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Compact";
+  src: url("fonts/MTSCompact-Regular.eot");
+  src: url("fonts/MTSCompact-Regular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MTSCompact-Regular.woff2") format("woff2"),
+    url("fonts/MTSCompact-Regular.woff") format("woff"),
+    url("fonts/MTSCompact-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-wide: "MTS Wide";
+  --font-sans: "MTS Sans";
+  --font-compact: "MTS Compact";
+}
+
+#app {
+}
