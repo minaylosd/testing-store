@@ -15,7 +15,7 @@
       </p>
     </div>
 
-    <form>
+    <form @submit.prevent="submitForm">
       <div class="mb-4">
         <label
           for="city"
@@ -109,7 +109,7 @@
 <script setup>
 import { reactive } from "vue";
 
-const emit = defineEmits(["returnToCart"]);
+const emit = defineEmits(["returnToCart", "completeCheckout"]);
 
 const returnToCart = () => {
   emit("returnToCart");
@@ -124,5 +124,6 @@ const form = reactive({
 
 const submitForm = () => {
   console.log("Form submitted:", form);
+  emit("completeCheckout");
 };
 </script>

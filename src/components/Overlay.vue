@@ -8,6 +8,7 @@
       @proceedToCheckout="showCheckout"
       @close="handleOverlayClick"
       @returnToCart="showCart"
+      @completeCheckout="showStatus"
     />
   </div>
 </template>
@@ -16,6 +17,7 @@
 import { ref, computed } from "vue";
 import ShoppingCart from "./ShoppingCart.vue";
 import CheckoutForm from "./CheckoutForm.vue";
+import CheckoutStatus from "./CheckoutStatus.vue";
 
 const emit = defineEmits(["close"]);
 const view = ref("ShoppingCart");
@@ -32,7 +34,20 @@ const showCart = () => {
   view.value = "ShoppingCart";
 };
 
+const showStatus = () => {
+  view.value = "CheckoutStatus";
+};
+
 const currentView = computed(() => {
-  return view.value === "ShoppingCart" ? ShoppingCart : CheckoutForm;
+  switch (view.value) {
+    case "ShoppingCart":
+      return ShoppingCart;
+    case "CheckoutForm":
+      return CheckoutForm;
+    case "CheckoutStatus":
+      return CheckoutStatus;
+    default:
+      return ShoppingCart;
+  }
 });
 </script>
