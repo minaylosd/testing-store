@@ -2,7 +2,7 @@
   <div
     class="w-[440px] px-5 pt-8 pb-5 bg-white shadow-lg rounded-4xl flex flex-col gap-8"
   >
-    <img class="mx-auto" :src="modalData.imgSrc" alt="" />
+    <div class="mx-auto"><component :is="modalData.statusIcon" /></div>
 
     <div>
       <h2
@@ -27,6 +27,8 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import Error from "./icons/Error.vue";
+import Success from "./icons/Success.vue";
 
 const emit = defineEmits(["close"]);
 
@@ -41,7 +43,7 @@ const modalData = computed(() => ({
   message: success.value
     ? "Товары были успешно оплачены, ожидайте уведомление в личном кабинете"
     : "При оплате товара произошла ошибка.\nПроверьте баланс или повторите попытку позднее",
-  imgSrc: success.value ? "/icons/success.svg" : "/icons/error.svg",
+  statusIcon: success.value ? Success : Error,
 }));
 
 const formattedMessage = computed(() =>
