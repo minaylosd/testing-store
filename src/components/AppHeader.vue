@@ -56,12 +56,12 @@ import cartStore from "@/store/cart.js";
 const cart = cartStore.cart;
 
 const props = defineProps({
-  cartVisible: Boolean,
+  overlayVisible: Boolean,
 });
 
-const emit = defineEmits(["toggle-cart"]);
+const emit = defineEmits(["toggle-overlay"]);
 
 const handleCartClick = () => {
-  emit("toggle-cart");
+  emit("toggle-overlay");
 };
 </script>

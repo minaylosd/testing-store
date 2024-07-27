@@ -1,7 +1,10 @@
 <template>
   <div id="app" class="flex flex-col">
-    <AppHeader :cartVisible="cartVisible" @toggle-cart="toggleCartVisibility" />
-    <ShoppingCart v-if="cartVisible" @close="toggleCartVisibility" />
+    <AppHeader
+      :overlayVisible="overlayVisible"
+      @toggle-overlay="toggleOverlayVisibility"
+    />
+    <Overlay v-if="overlayVisible" @close="toggleOverlayVisibility" />
     <router-view />
     <AppFooter />
   </div>
@@ -11,11 +14,11 @@
 import { ref } from "vue";
 import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
-import ShoppingCart from "./components/ShoppingCart.vue";
+import Overlay from "./components/Overlay.vue";
 
-const cartVisible = ref(false);
+const overlayVisible = ref(false);
 
-const toggleCartVisibility = () => {
-  cartVisible.value = !cartVisible.value;
+const toggleOverlayVisibility = () => {
+  overlayVisible.value = !overlayVisible.value;
 };
 </script>
