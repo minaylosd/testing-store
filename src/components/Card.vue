@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden w-91 rounded-3xl shadow-shadow">
+  <div class="w-full overflow-hidden min-w-80 rounded-3xl shadow-shadow">
     <div class="relative w-full overflow-hidden h-80">
       <img
         class="absolute z-10 object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"

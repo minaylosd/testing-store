@@ -2,7 +2,9 @@
   <header
     class="fixed top-0 left-0 z-30 w-full bg-white shadow-shadow py-[9px]"
   >
-    <div class="flex items-center justify-between mx-auto max-w-388">
+    <div
+      class="flex items-center justify-between px-20 mx-auto 2xl:px-10 max-w-388"
+    >
       <router-link
         class="flex items-center gap-2.5 font-compact text-xl leading-6 text-txt font-normal"
         to="/"

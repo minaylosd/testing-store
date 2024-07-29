@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full mx-auto max-w-388 mt-25">
+  <main class="w-full px-20 mx-auto 2xl:px-10 max-w-388 mt-25">
     <BreadCrumbs pageName="История баланса" />
     <div class="flex items-center gap-4 mb-8">
       <h1 class="font-medium leading-none text-black font-wide text-heading">
@@ -10,7 +10,7 @@
       </div>
     </div>
     <section
-      class="flex flex-col w-full px-6 mb-[182px] py-3 border mb- border-divider/50 rounded-2xl"
+      class="flex flex-col w-full px-6 mb-[182px] py-3 border border-divider/50 rounded-2xl"
     >
       <BalanceHistoryHeader />
 

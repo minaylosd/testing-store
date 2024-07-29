@@ -1,22 +1,24 @@
 <template>
-  <main class="w-full mx-auto max-w-388 mt-25">
-    <BreadCrumbs pageName="История покупок" />
-    <div class="flex items-center gap-4 mb-8">
-      <h1 class="font-medium leading-none text-black font-wide text-heading">
-        История покупок
-      </h1>
-    </div>
-    <section
-      class="flex flex-col w-full px-6 mb-[182px] pt-3 pb-2 border mb- border-divider/50 rounded-2xl"
-    >
-      <PurchasesHistoryHeader />
+  <main class="w-full mt-25">
+    <div class="px-20 mx-auto max-w-388 2xl:px-10">
+      <BreadCrumbs pageName="История покупок" />
+      <div class="flex items-center gap-4 mb-8">
+        <h1 class="font-medium leading-none text-black font-wide text-heading">
+          История покупок
+        </h1>
+      </div>
+      <section
+        class="flex flex-col w-full px-6 mb-[182px] pt-3 pb-2 border mb- border-divider/50 rounded-2xl"
+      >
+        <PurchasesHistoryHeader />
 
-      <PurchasesHistoryItem
-        v-for="(operation, index) in operations"
-        :key="index"
-        :operation="operation"
-      />
-    </section>
+        <PurchasesHistoryItem
+          v-for="(operation, index) in operations"
+          :key="index"
+          :operation="operation"
+        />
+      </section>
+    </div>
   </main>
 </template>
 

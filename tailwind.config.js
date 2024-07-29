@@ -18,6 +18,11 @@ module.exports = {
       'accent': '#007cff',
       'positive': '#26cd58',
     },
+    screens: {
+      'lg': '1180px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       gridTemplateColumns: {
         purchases: "156px 380px 156px 380px 156px 156px",

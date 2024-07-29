@@ -216,12 +216,16 @@ const handlePageChange = (page) => {
 };
 </script>
 <template>
-  <main class="w-full mx-auto max-w-388 mt-25">
+  <main class="w-full px-20 mx-auto max-w-388 mt-25 2xl:px-10">
     <Slider />
-    <section class="grid items-start grid-cols-4 gap-8 mt-8 mb-16">
+    <section
+      class="grid items-start grid-cols-2 gap-8 mt-8 mb-16 lg:grid-cols-3 2xl:grid-cols-4"
+    >
       <FilterCard />
-      <div class="col-span-3">
-        <div class="grid grid-cols-3 gap-8">
+      <div class="lg:col-span-2 2xl:col-span-3">
+        <div
+          class="grid items-center justify-center grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3"
+        >
           <Card
             v-for="(item, index) in paginatedData"
             :key="index"

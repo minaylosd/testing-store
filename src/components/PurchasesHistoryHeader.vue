@@ -1,12 +1,20 @@
 <template>
-  <div class="grid w-full gap-6 grid-cols-purchases">
-    <div class="p-3 text-sm font-medium font-compact text-txt">ID заказа</div>
+  <div class="grid w-full grid-cols-12 gap-6">
+    <div
+      class="p-3 text-sm font-medium font-compact text-txt whitespace-nowrap"
+    >
+      ID заказа
+    </div>
 
-    <div class="p-3 text-sm font-medium font-compact text-txt">Товары</div>
+    <div class="col-span-3 p-3 text-sm font-medium font-compact text-txt">
+      Товары
+    </div>
 
-    <div class="p-3 text-sm font-medium font-compact text-txt">Стоимость</div>
+    <div class="col-span-2 p-3 text-sm font-medium font-compact text-txt">
+      Стоимость
+    </div>
 
-    <div class="p-3 text-sm font-medium font-compact text-txt">
+    <div class="col-span-3 p-3 text-sm font-medium font-compact text-txt">
       Адрес доставки
     </div>
 
@@ -16,7 +24,9 @@
       Дата<img src="/icons/date-icon.svg" alt="" />
     </div>
 
-    <DropdownFilter dropdown-type="status" />
+    <div class="flex justify-center col-span-2">
+      <DropdownFilter dropdown-type="status" />
+    </div>
   </div>
 </template>
 

@@ -1,12 +1,12 @@
 <template>
   <div
-    class="grid items-start w-full gap-6 border-t grid-cols-purchases border-divider"
+    class="grid items-start w-full grid-cols-12 gap-6 border-t border-divider"
   >
     <div class="p-3 text-sm font-normal font-compact text-txt">
       {{ operation.id }}
     </div>
 
-    <div class="flex flex-col gap-3 p-3">
+    <div class="flex flex-col col-span-3 gap-3 p-3">
       <div v-for="(item, i) in operation.items" :key="i">
         <div class="text-sm font-normal font-compact text-txt">
           {{ item.name }}
@@ -21,11 +21,11 @@
       </div>
     </div>
 
-    <div class="p-3 text-sm font-normal font-compact text-txt">
+    <div class="col-span-2 p-3 text-sm font-normal font-compact text-txt">
       {{ operation.total }} ₿
     </div>
 
-    <div class="p-3 text-sm font-normal font-compact text-txt">
+    <div class="col-span-3 p-3 text-sm font-normal font-compact text-txt">
       {{ operation.address }}
     </div>
 
@@ -36,7 +36,7 @@
     </div>
 
     <div
-      class="flex items-center gap-1.5 p-3 text-sm font-normal font-compact text-txt"
+      class="col-span-2 flex items-center justify-center gap-1.5 p-3 text-sm font-normal font-compact text-txt"
     >
       <div
         :class="{

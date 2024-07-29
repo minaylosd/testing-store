@@ -1,6 +1,6 @@
 <template>
   <footer class="w-full py-16 bg-tertiary">
-    <div class="mx-auto max-w-388">
+    <div class="px-20 mx-auto 2xl:px-8 max-w-388">
       <div class="grid items-start w-full grid-cols-12 gap-8">
         <div class="col-span-4">
           <h2 class="mb-4 text-xl font-bold leading-6 font-text text-txt">
@@ -17,79 +17,75 @@
           </p>
         </div>
 
-        <div class="col-span-4"></div>
-
-        <nav class="flex items-start gap-[135px] col-span-4">
-          <ul class="flex flex-col gap-5">
-            <li>
-              <router-link
-                to="/"
-                class="text-base font-normal font-text text-greyfooter"
-                >Главная</router-link
-              >
-            </li>
-            <li>
-              <router-link
-                to="/"
-                class="text-base font-normal font-text text-greyfooter"
-                >Продукты</router-link
-              >
-            </li>
-            <li>
-              <router-link
-                to="/"
-                class="text-base font-normal font-text text-greyfooter"
-                >Войти</router-link
-              >
-            </li>
-          </ul>
-          <ul class="flex flex-col gap-5 max-w-65">
-            <li>
-              <a
-                class="text-base font-normal font-text text-greyfooter"
-                href="/"
-                target="_blank"
-                >Магазин</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-base font-normal font-text text-greyfooter"
-                href="/"
-                target="_blank"
-                >Акции</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-base font-normal font-text text-greyfooter"
-                href="/"
-                target="_blank"
-                >Поддержка</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-base font-normal font-text text-greyfooter"
-                href="/"
-                target="_blank"
-                >Согласие на обработку персональных данных</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-base font-normal font-text text-greyfooter"
-                href="/"
-                target="_blank"
-                >Условия проведения акции</a
-              >
-            </li>
-          </ul>
-        </nav>
+        <ul class="flex flex-col col-span-2 col-start-8 gap-5 lg:col-start-9">
+          <li>
+            <router-link
+              to="/"
+              class="text-base font-normal font-text text-greyfooter"
+              >Главная</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/"
+              class="text-base font-normal font-text text-greyfooter"
+              >Продукты</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/"
+              class="text-base font-normal font-text text-greyfooter"
+              >Войти</router-link
+            >
+          </li>
+        </ul>
+        <ul class="flex flex-col col-span-3 gap-5 lg:col-span-2 max-w-65">
+          <li>
+            <a
+              class="text-base font-normal font-text text-greyfooter"
+              href="/"
+              target="_blank"
+              >Магазин</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-base font-normal font-text text-greyfooter"
+              href="/"
+              target="_blank"
+              >Акции</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-base font-normal font-text text-greyfooter"
+              href="/"
+              target="_blank"
+              >Поддержка</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-base font-normal font-text text-greyfooter"
+              href="/"
+              target="_blank"
+              >Согласие на обработку персональных данных</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-base font-normal font-text text-greyfooter"
+              href="/"
+              target="_blank"
+              >Условия проведения акции</a
+            >
+          </li>
+        </ul>
       </div>
       <div class="w-full bg-divider/50 h-[1px] my-[54px]"></div>
       <div class="grid items-start grid-cols-12 gap-8">
-        <div class="col-span-2">
+        <div class="col-span-3 lg:col-span-2">
           <h3 class="mb-4 text-base font-normal font-text text-txt">
             Социальные сети
           </h3>
@@ -99,7 +95,7 @@
           </div>
         </div>
 
-        <div class="col-span-2">
+        <div class="col-span-3 lg:col-span-2">
           <h3 class="mb-4 text-base font-normal font-text text-txt">
             Приложение
           </h3>
@@ -114,20 +110,26 @@
           </div>
         </div>
 
-        <div class="col-span-4"></div>
-
         <div
-          class="flex flex-wrap col-span-3 text-base font-normal gap-x-2 gap-y-3 font-text text-greyfooter"
+          class="flex flex-wrap col-span-3 col-start-8 text-base font-normal lg:col-start-9 gap-x-2 gap-y-3 font-text text-greyfooter"
         >
-          <a href="/">Контакты</a>
-          <span>·</span>
-          <a href="/">Раскрытие информации</a>
-          <span>·</span>
-          <a href="/">Документы ПАО МТС</a>
-          <span>·</span>
-          <a href="/">Документы ПАО МТС</a>
-          <span>·</span>
-          <a href="/">Комплаенс и деловая этика</a>
+          <div class="flex gap-2">
+            <a href="/">Контакты</a>
+            <span>·</span>
+          </div>
+          <div class="flex gap-2">
+            <a class="whitespace-nowrap" href="/">Раскрытие информации</a>
+            <span>·</span>
+          </div>
+          <div class="flex gap-2">
+            <a class="whitespace-nowrap" href="/">Документы ПАО МТС</a>
+            <span>·</span>
+          </div>
+          <div class="flex gap-2">
+            <a class="whitespace-nowrap" href="/">Документы ПАО МТС</a>
+            <span>·</span>
+          </div>
+          <a class="whitespace-nowrap" href="/">Комплаенс и деловая этика</a>
         </div>
       </div>
 

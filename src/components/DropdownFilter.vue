@@ -1,11 +1,8 @@
 <template>
   <div
-    :class="[
-      'relative flex items-center gap-1 p-3 py-3 text-sm font-medium font-compact text-txt group',
-      { 'col-span-2': props.dropdownType === 'operation type' },
-    ]"
+    class="relative flex items-center gap-1 p-3 py-3 text-sm font-medium font-compact text-txt group"
   >
-    <span>{{ dropdownLabel }}</span
+    <span class="whitespace-nowrap">{{ dropdownLabel }}</span
     ><img src="/icons/filter-icon.svg" alt="" />
     <ul
       class="absolute z-10 bg-white top-full translate-y-[1px] -translate-x-3 rounded-2xl p-1.5 shadow-shadow w-full max-w-[164px] group-hover:block hidden"
