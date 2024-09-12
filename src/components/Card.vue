@@ -7,6 +7,7 @@
         :alt="product.name"
       />
       <img
+        @click="showDetails(product)"
         src="/icons/search-icon.svg"
         class="absolute z-20 cursor-pointer bottom-4 right-4"
         alt=""
@@ -68,6 +69,12 @@ const props = defineProps({
     required: true,
   },
 });
+
+const emit = defineEmits(["open-details"]);
+
+const showDetails = (product) => {
+  emit("open-details", product);
+};
 
 const selectedSize = ref(false); // Default to no size selected
 

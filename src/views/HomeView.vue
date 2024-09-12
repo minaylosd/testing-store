@@ -4,9 +4,28 @@ import Slider from "../components/Slider.vue";
 import FilterCard from "../components/FilterCard.vue";
 import Card from "../components/Card.vue";
 import Pagination from "../components/Pagination.vue";
+import ItemDetailsOverlay from "../components/ItemDetailsOverlay.vue";
 
 const itemsPerPage = 9;
 const currentPage = ref(1);
+
+const itemDetailsIsShown = ref(false);
+const itemDetailsRef = ref();
+
+const showItemDetails = (item) => {
+  const body = document.querySelector("body");
+  body.style.overflow = "hidden";
+
+  itemDetailsIsShown.value = true;
+  itemDetailsRef.value = item;
+};
+
+const closeItemDetails = () => {
+  const body = document.querySelector("body");
+  body.style.overflow = "auto";
+
+  itemDetailsIsShown.value = false;
+};
 
 const data = [
   {
@@ -217,6 +236,11 @@ const handlePageChange = (page) => {
 </script>
 <template>
   <main class="w-full px-20 mx-auto max-w-388 mt-25 2xl:px-10">
+    <ItemDetailsOverlay
+      v-if="itemDetailsIsShown"
+      :item="itemDetailsRef"
+      @close-details="closeItemDetails"
+    />
     <Slider />
     <section
       class="grid items-start grid-cols-2 gap-8 mt-8 mb-16 lg:grid-cols-3 2xl:grid-cols-4"
@@ -230,6 +254,7 @@ const handlePageChange = (page) => {
             v-for="(item, index) in paginatedData"
             :key="index"
             :product="item"
+            @open-details="showItemDetails(item)"
           />
         </div>
         <Pagination
