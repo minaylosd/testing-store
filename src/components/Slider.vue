@@ -1,21 +1,27 @@
 <template>
-  <section class="rounded-4xl bg-[#e7eafa] px-10 pt-6 pb-8 w-full">
+  <section
+    class="rounded-4xl bg-[#e7eafa] px-4 pt-4 pb-4 lg:px-10 lg:pt-6 lg:pb-8 w-full h-[300px] flex flex-col"
+  >
     <div class="w-full h-1"></div>
-    <div class="my-6 min-h-35">
+    <div class="my-3 lg:my-6">
       <h1
-        class="mb-4 font-medium leading-none text-black font-wide text-heading"
+        class="mb-4 text-2xl font-medium leading-7 text-black lg:leading-none font-wide lg:text-heading white"
       >
         Магазин вознаграждений
       </h1>
-      <p class="text-xl font-normal text-black font-compact">Description</p>
-    </div>
-    <div class="flex items-center justify-between">
-      <router-link
-        class="flex items-center p-2.5 text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
-        to="/"
-        ><span class="px-2 py-1">Подробнее</span></router-link
+      <p
+        class="text-sm font-normal text-black h-30 lg:h-20 lg:text-xl font-compact"
       >
-      <div class="flex items-center gap-4">
+        Description
+      </p>
+    </div>
+    <div class="flex items-center justify-between mt-auto mb-0 align-bottom">
+      <router-link
+        class="flex items-center p-[14px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
+        to="/"
+        ><span class="lg:px-2 lg:py-1 px-1 py-0.5">Подробнее</span></router-link
+      >
+      <div class="items-center hidden gap-4 lg:flex">
         <div class="rounded-full cursor-pointer shadow-shadow">
           <Arrow />
         </div>

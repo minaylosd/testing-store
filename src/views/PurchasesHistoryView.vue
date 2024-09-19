@@ -1,6 +1,6 @@
 <template>
   <main class="w-full mt-25">
-    <div class="px-20 mx-auto max-w-388 2xl:px-10">
+    <div class="px-20 mx-auto max-w-388 2xl:px-9">
       <BreadCrumbs pageName="История покупок" />
       <div class="flex items-center gap-4 mb-8">
         <h1 class="font-medium leading-none text-black font-wide text-heading">

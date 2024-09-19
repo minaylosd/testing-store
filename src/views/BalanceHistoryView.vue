@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full px-20 mx-auto 2xl:px-10 max-w-388 mt-25">
+  <main class="w-full px-20 mx-auto 2xl:px-9 max-w-388 mt-25">
     <BreadCrumbs pageName="История баланса" />
     <div class="flex items-center gap-4 mb-8">
       <h1 class="font-medium leading-none text-black font-wide text-heading">

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[440px] px-5 pt-8 pb-5 bg-white shadow-lg rounded-4xl flex flex-col gap-8"
+    class="md:w-[440px] max-w-[320px] md:max-w-[440px] px-5 pt-8 pb-5 bg-white shadow-lg rounded-4xl flex flex-col gap-8"
   >
     <div>
       <h2

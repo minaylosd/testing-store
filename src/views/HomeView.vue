@@ -235,7 +235,9 @@ const handlePageChange = (page) => {
 };
 </script>
 <template>
-  <main class="w-full px-20 mx-auto max-w-388 mt-25 2xl:px-10">
+  <main
+    class="w-full max-w-[360px] px-5 mx-auto lg:px-20 md:max-w-388 lg:mt-25 mt-14 2xl:px-9"
+  >
     <ItemDetailsOverlay
       v-if="itemDetailsIsShown"
       :item="itemDetailsRef"
@@ -243,7 +245,7 @@ const handlePageChange = (page) => {
     />
     <Slider />
     <section
-      class="grid items-start grid-cols-2 gap-8 mt-8 mb-16 lg:grid-cols-3 2xl:grid-cols-4"
+      class="grid items-start grid-cols-1 gap-8 mt-8 mb-16 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
     >
       <FilterCard />
       <div class="lg:col-span-2 2xl:col-span-3">

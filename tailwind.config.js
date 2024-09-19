@@ -19,6 +19,7 @@ module.exports = {
       'positive': '#26cd58',
     },
     screens: {
+      'md': '640px',
       'lg': '1180px',
       'xl': '1280px',
       '2xl': '1536px',
@@ -44,6 +45,8 @@ module.exports = {
         '19': '4.75rem',
         '25': '6.25rem',
         '29': '7.25rem',
+        '30': '7.5rem',
+        '31': '7.75rem',
         '35': '8.75rem',
         '65': '16.25rem',
         '91': '22.75rem',
