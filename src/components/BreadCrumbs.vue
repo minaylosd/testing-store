@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ul class="flex items-center gap-1 mb-8">
+    <ul class="flex items-center gap-1 mb-5 md:mb-8">
       <li>
         <a class="text-sm font-normal font-compact text-greyfooter" href="/"
           >Магазин вознаграждений</a
@@ -8,9 +8,9 @@
       </li>
       <li><img src="/icons/breadcrumb-chevron.svg" alt="" /></li>
       <li>
-        <p class="text-sm font-normal font-compact text-txt">
+        <a class="text-sm font-normal font-compact text-txt">
           {{ props.pageName }}
-        </p>
+        </a>
       </li>
     </ul>
   </nav>

@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="block w-8 h-8 lg:hidden">
+        <div @click="toggleMenu" class="block w-8 h-8 lg:hidden">
           <MenuBurger />
         </div>
       </div>
@@ -61,6 +61,9 @@ import Wallet from "./icons/Wallet.vue";
 import CartLogo from "./icons/CartLogo.vue";
 import cartStore from "@/store/cart.js";
 import MenuBurger from "./icons/MenuBurger.vue";
+import { inject } from "vue";
+
+const toggleMenu = inject("toggleMenu");
 
 const cart = cartStore.cart;
 

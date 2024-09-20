@@ -1,56 +1,50 @@
 <template>
-  <div class="fixed inset-0 z-50 w-full h-full py-6 bg-white">
-    <div class="relative w-full h-full overflow-hidden">
-      <div @click="close" class="absolute top-0 w-8 h-8 cursor-pointer right-5">
-        <CloseCross />
-      </div>
+  <div class="fixed inset-0 z-50 w-full h-full pb-6 bg-white pt-15 md:pt-6">
+    <div
+      @click="close"
+      class="absolute w-8 h-8 cursor-pointer md:top-5 top-3 right-5 z-110">
+      <CloseCross />
+    </div>
+    <div class="w-full h-full overflow-hidden">
       <div
-        class="grid items-center w-full h-full grid-cols-12 gap-8 px-20 mx-auto max-w-388 2xl:px-10"
-      >
+        class="flex flex-col items-center w-full h-full grid-cols-12 gap-8 px-5 mx-auto md:px-20 md:grid max-w-388 2xl:px-9">
         <div
-          class="col-span-2 flex flex-col items-start justify-center gap-2.5"
-        >
+          class="col-span-2 flex order-2 md:order-none md:flex-col items-start justify-center gap-2.5 mr-auto ml-0 md:mr-0 md:ml-0">
           <div
             v-for="(slide, index) in slides"
             :key="index"
             @click="handleThumb(index)"
             data-role="thumb-btn"
             :class="[
-              'relative w-40 h-40 overflow-hidden rounded-lg cursor-pointer border-2 border-solid',
+              'relative md:w-40 w-11 md:h-40 h-11 overflow-hidden rounded-lg cursor-pointer border-2 border-solid',
               index === shownSlide ? 'border-brand' : 'border-transparent',
-            ]"
-          >
+            ]">
             <img
               class="absolute z-10 object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              :src="slide"
-            />
+              :src="slide" />
           </div>
         </div>
 
         <div
           @click="handlePrev"
           data-role="prev-btn"
-          class="ml-auto mr-3 rounded-full cursor-pointer shadow-shadow w-11 h-11"
-        >
+          class="hidden ml-auto mr-3 rounded-full cursor-pointer md:block md:order-none shadow-shadow w-11 h-11">
           <Arrow />
         </div>
 
         <div
           data-role="slider"
-          class="relative w-full h-full col-span-6 overflow-hidden"
-        >
+          class="relative order-1 w-full h-full col-span-6 overflow-hidden rounded-lg md:order-none">
           <img
-            class="absolute object-cover w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+            class="absolute object-cover w-full h-auto -translate-x-1/2 -translate-y-1/2 md:h-full top-1/2 left-1/2"
             :src="slides[shownSlide]"
-            alt=""
-          />
+            alt="" />
         </div>
 
         <div
           @click="handleNext"
           data-role="next-btn"
-          class="ml-3 mr-auto rounded-full cursor-pointer shadow-shadow w-11 h-11"
-        >
+          class="hidden ml-3 mr-auto rounded-full cursor-pointer md:block md:order-none shadow-shadow w-11 h-11">
           <Arrow class="rotate-180" />
         </div>
       </div>

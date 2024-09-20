@@ -1,25 +1,27 @@
 <template>
-  <main class="w-full px-20 mx-auto 2xl:px-9 max-w-388 mt-25">
+  <main
+    class="w-full px-5 md:px-20 mx-auto 2xl:px-9 max-w-[360px] md:max-w-388 mt-25">
     <BreadCrumbs pageName="История баланса" />
-    <div class="flex items-center gap-4 mb-8">
-      <h1 class="font-medium leading-none text-black font-wide text-heading">
+    <div class="flex items-center gap-4 mb-5 md:mb-8">
+      <h1
+        class="text-2xl font-medium leading-7 text-black md:leading-none font-wide md:text-heading">
         История баланса
       </h1>
-      <div class="w-11 h-11">
+      <div class="w-8 h-8 md:w-11 md:h-11">
         <Coin />
       </div>
     </div>
-    <section
-      class="flex flex-col w-full px-6 mb-[182px] py-3 border border-divider/50 rounded-2xl"
-    >
-      <BalanceHistoryHeader />
+    <div class="w-full overflow-x-scroll">
+      <section
+        class="flex flex-col w-full px-6 md:mb-[182px] mb-16 py-3 border border-divider/50 rounded-2xl min-w-[500px]">
+        <BalanceHistoryHeader />
 
-      <BalanceHistoryItem
-        v-for="(operation, index) in operations"
-        :key="index"
-        :operation="operation"
-      />
-    </section>
+        <BalanceHistoryItem
+          v-for="(operation, index) in operations"
+          :key="index"
+          :operation="operation" />
+      </section>
+    </div>
   </main>
 </template>
 
