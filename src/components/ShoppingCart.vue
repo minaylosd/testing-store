@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[440px] px-5 pt-8 pb-5 bg-white shadow-lg rounded-4xl flex flex-col gap-8"
+    class="md:w-[440px] max-w-[320px] md:max-w-[440px] px-5 pt-8 pb-5 bg-white shadow-lg rounded-4xl flex flex-col gap-8"
   >
     <h2
       class="px-4 text-xl font-medium leading-6 text-center font-wide text-txt"
@@ -11,16 +11,18 @@
       <li
         v-for="item in cart.items"
         :key="item.product.id"
-        class="flex items-start justify-between py-4 border-b border-divider"
+        class="flex flex-wrap items-start justify-between py-4 border-b md:flex-nowrap border-divider gap-y-4"
       >
-        <div class="relative overflow-hidden rounded-lg w-11 h-11">
+        <div
+          class="relative overflow-hidden rounded-lg w-11 h-11 order-1 md:order-[0]"
+        >
           <img
             :src="`/${item.product.imgSrc}`"
             alt=""
             class="absolute z-10 object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
           />
         </div>
-        <div class="w-[150px]">
+        <div class="w-[150px] order-2 md:order-[0]">
           <h3 class="mb-1 font-medium leading-6 text-17 font-compact">
             {{ item.product.name }}
           </h3>
@@ -31,7 +33,7 @@
             {{ item.product.size }}
           </p>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 order-4 md:order-[0]">
           <button @click="decreaseQuantity(item.product.id)" class="p-1">
             <img src="/icons/minus.svg" alt="Minus button" />
           </button>
@@ -43,12 +45,15 @@
           </button>
         </div>
         <div
-          class="flex items-center gap-1 font-medium leading-6 font-compact text-txt text-17"
+          class="flex items-center gap-1 font-medium leading-6 font-compact text-txt text-17 order-5 md:order-[0]"
         >
           {{ item.product.price }}
           <div class="w-6 h-6"><Coin /></div>
         </div>
-        <button @click="removeFromCart(item.product.id)">
+        <button
+          class="order-3 md:order-[0]"
+          @click="removeFromCart(item.product.id)"
+        >
           <img src="/icons/delete.svg" alt="Delete button" />
         </button>
       </li>

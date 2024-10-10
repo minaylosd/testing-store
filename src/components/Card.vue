@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full overflow-hidden min-w-80 rounded-3xl shadow-shadow">
+  <div class="w-full overflow-hidden min-w-[280px] rounded-3xl shadow-shadow">
     <div class="relative w-full overflow-hidden h-80">
       <img
         class="absolute z-10 object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
@@ -7,6 +7,7 @@
         :alt="product.name"
       />
       <img
+        @click="showDetails(product)"
         src="/icons/search-icon.svg"
         class="absolute z-20 cursor-pointer bottom-4 right-4"
         alt=""
@@ -68,6 +69,12 @@ const props = defineProps({
     required: true,
   },
 });
+
+const emit = defineEmits(["open-details"]);
+
+const showDetails = (product) => {
+  emit("open-details", product);
+};
 
 const selectedSize = ref(false); // Default to no size selected
 
