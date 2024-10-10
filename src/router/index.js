@@ -22,6 +22,11 @@ const router = new VueRouter({
       path: '/purchases',
       name: 'purchases',
       component: () => import('../views/PurchasesHistoryView.vue')
+    },
+    {
+      path: '/product',
+      name: 'product',
+      component: () => import('../views/ProductView.vue')
     }
   ]
 })

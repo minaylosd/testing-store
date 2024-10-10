@@ -17,6 +17,7 @@ module.exports = {
       'greyfooter': '#9198a0',
       'accent': '#007cff',
       'positive': '#26cd58',
+      'active': '#12b23f'
     },
     screens: {
       'md': '640px',
@@ -32,6 +33,7 @@ module.exports = {
         wide: ["var(--font-wide)"],
         sans: ["var(--font-sans)"],
         compact: ["var(--font-compact)"],
+        text: ["var(--font-text)"],
       },
       fontSize: {
         '2.5': "0.625rem",
