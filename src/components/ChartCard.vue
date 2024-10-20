@@ -1,15 +1,17 @@
 <template>
   <div
-    class="px-6 pt-4 pb-6 mb-6 rounded-3xl bg-tertiary grid gap-[5%] grid-cols-[50%_45%]"
+    class="px-6 pt-4 pb-6 mb-6 rounded-3xl bg-tertiary md:grid flex flex-col gap-[5%] grid-cols-[50%_45%]"
   >
     <div class="w-full">
-      <div class="flex items-center gap-2 mb-8">
-        <p class="font-medium leading-6 text-black text-17 font-compact">
-          Стоимость выполнения всех заданий: 570
+      <div class="mb-8">
+        <p
+          class="inline-block font-medium leading-6 text-black text-17 font-compact"
+        >
+          Стоимость выполнения всех заданий:
+          <span class="items-center inline-block gap-2"
+            >570 <span class="inline-block w-6 h-6"> <Coin /></span
+          ></span>
         </p>
-        <div class="w-6 h-6">
-          <Coin />
-        </div>
       </div>
       <div class="mb-3">
         <p class="mb-3 font-medium leading-6 text-black text-17 font-compact">
@@ -17,7 +19,7 @@
         </p>
         <div class="flex items-center gap-3">
           <button
-            class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
+            class="py-[14px] px-3 md:px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
           >
             <span class="px-2">Инструкция</span>
           </button>
@@ -66,9 +68,4 @@ import BarChart from "./BarChart.vue";
 const props = defineProps({
   chartData: Object,
 });
-
-// const chartData = ref({
-//   labels: ["", "", "", ""],
-//   values: [18, 55, 90, 45],
-// });
 </script>

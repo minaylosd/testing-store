@@ -1,8 +1,10 @@
 <template>
   <div
-    class="flex items-center justify-center w-full h-full p-6 bg-white rounded-xl"
+    class="flex items-center justify-center w-full h-full p-6 overflow-auto bg-white rounded-xl"
   >
-    <Bar v-if="chartData" :data="chartData" :options="chartOptions" />
+    <div class="flex items-center md:justify-center w-[570px] h-[280px]">
+      <Bar v-if="chartData" :data="chartData" :options="chartOptions" />
+    </div>
   </div>
 </template>
 
@@ -58,6 +60,7 @@ const chartData = computed(() => {
 
 const chartOptions = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       display: true,

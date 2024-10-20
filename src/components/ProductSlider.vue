@@ -2,13 +2,22 @@
   <div class="bg-[#E5EEF9] overflow-hidden">
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide
-        ><img class="w-full h-auto" src="/screenshot-1.png" alt=""
+        ><img
+          class="w-full h-auto min-w-[200px]"
+          src="/screenshot-1.png"
+          alt=""
       /></swiper-slide>
       <swiper-slide
-        ><img class="w-full h-auto" src="/screenshot-2.png" alt=""
+        ><img
+          class="w-full h-auto min-w-[200px]"
+          src="/screenshot-2.png"
+          alt=""
       /></swiper-slide>
       <swiper-slide
-        ><img class="w-full h-auto" src="/screenshot-3.png" alt=""
+        ><img
+          class="w-full h-auto min-w-[200px]"
+          src="/screenshot-3.png"
+          alt=""
       /></swiper-slide>
     </swiper>
   </div>
@@ -30,6 +39,14 @@ export default {
       swiperOption: {
         slidesPerView: 2.5,
         spaceBetween: 50,
+        breakpoints: {
+          640: {
+            slidesPerView: 2.5,
+          },
+          0: {
+            slidesPerView: 1.5,
+          },
+        },
         freeMode: true,
         pagination: {
           el: ".swiper-pagination",

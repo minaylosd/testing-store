@@ -1,7 +1,7 @@
 <template>
   <main class="w-full bg-white mt-25">
-    <div class="px-5 mx-auto md:px-20 max-w-[360px] md:max-w-388 2xl:px-9">
-      <section class="w-full px-6 mb-[182px]">
+    <div class="px-4 mx-auto md:px-20 max-w-none md:max-w-388 2xl:px-9">
+      <section class="w-full mb-[44px] md:px-6 md:mb-[182px]">
         <router-link class="mb-6" to="/"
           ><button
             class="text-xs font-bold tracking-wider font-compact text-brand"
@@ -22,21 +22,23 @@
             </div>
           </div>
 
-          <button
-            v-if="isDeviceAdded && isUserProfileCompleted"
-            class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
-          >
-            <span class="px-2">Перейти к заданиям</span>
-          </button>
-          <button
-            v-else
-            class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
-          >
-            <span class="px-2">Заполнить информацию о себе</span>
-          </button>
+          <div class="hidden md:block">
+            <button
+              v-if="isDeviceAdded && isUserProfileCompleted"
+              class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
+            >
+              <span class="px-2">Перейти к заданиям</span>
+            </button>
+            <button
+              v-else
+              class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
+            >
+              <span class="px-2">Заполнить информацию о себе</span>
+            </button>
+          </div>
         </div>
 
-        <div class="flex items-center gap-5 mb-6">
+        <div class="flex flex-col gap-5 mb-6 md:items-center md:flex-row">
           <div
             class="flex items-center gap-2 text-xs font-normal font-compact text-active"
           >
@@ -47,13 +49,28 @@
             <span>Активно</span>
           </div>
 
-          <div class="flex items-center gap-1">
+          <div class="flex flex-col gap-1 md:items-center md:flex-row">
             <p class="text-[#001424] text-17 leading-6 font-normal font-text">
               Дата тестирования:
             </p>
             <p class="text-xl font-medium leading-6 text-txt font-compact">
               с 22 мая по 30 июля 2020
             </p>
+          </div>
+
+          <div class="block md:hidden">
+            <button
+              v-if="isDeviceAdded && isUserProfileCompleted"
+              class="py-[14px] w-full px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
+            >
+              <span class="px-2">Перейти к заданиям</span>
+            </button>
+            <button
+              v-else
+              class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
+            >
+              <span class="px-2">Заполнить информацию о себе</span>
+            </button>
           </div>
         </div>
 
@@ -72,9 +89,14 @@
           </p>
         </div>
         <button
-          class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand mb-8"
+          class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand mb-2 md:mb-8 w-full md:w-auto"
         >
           <span class="px-2">Получить приложение</span>
+        </button>
+        <button
+          class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand mb-8 w-full md:w-auto block md:hidden"
+        >
+          <span class="px-2">Перейти к заданиям</span>
         </button>
 
         <div class="mb-8 overflow-hidden rounded-3xl">
@@ -105,7 +127,9 @@
               заданий</span
             >
           </div>
-          <div class="flex items-center justify-between mb-8">
+          <div
+            class="flex flex-col justify-between gap-4 mb-8 md:items-center md:flex-row"
+          >
             <h3 class="text-2xl font-medium leading-7 text-black font-wide">
               Задания
             </h3>
@@ -116,7 +140,7 @@
             </button>
           </div>
 
-          <div class="grid grid-cols-4 gap-6">
+          <div class="flex flex-col grid-cols-4 gap-6 md:grid">
             <AssignmentBtn
               v-for="(assignment, index) in assignments"
               :key="index"
