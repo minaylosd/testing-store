@@ -1,19 +1,19 @@
 <template>
   <div class="bg-[#E5EEF9] overflow-hidden">
     <swiper class="swiper" :options="swiperOption">
-      <swiper-slide
+      <swiper-slide class="min-w-[200px]"
         ><img
           class="w-full h-auto min-w-[200px]"
           src="/screenshot-1.png"
           alt=""
       /></swiper-slide>
-      <swiper-slide
+      <swiper-slide class="min-w-[200px]"
         ><img
           class="w-full h-auto min-w-[200px]"
           src="/screenshot-2.png"
           alt=""
       /></swiper-slide>
-      <swiper-slide
+      <swiper-slide class="min-w-[200px]"
         ><img
           class="w-full h-auto min-w-[200px]"
           src="/screenshot-3.png"
@@ -40,11 +40,13 @@ export default {
         slidesPerView: 2.5,
         spaceBetween: 50,
         breakpoints: {
-          640: {
+          874: {
             slidesPerView: 2.5,
+            spaceBetween: 50,
           },
           0: {
             slidesPerView: 1.5,
+            spaceBetween: 20,
           },
         },
         freeMode: true,

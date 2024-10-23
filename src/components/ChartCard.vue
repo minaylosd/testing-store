@@ -3,7 +3,7 @@
     class="px-6 pt-4 pb-6 mb-6 rounded-3xl bg-tertiary lg:grid flex flex-col gap-[5%] grid-cols-[50%_45%]"
   >
     <div class="w-full">
-      <div class="mb-8">
+      <div class="mb-4 md-bar:mb-6">
         <p
           class="inline-block font-medium leading-6 text-black text-17 font-compact"
         >
@@ -63,7 +63,7 @@
 
 <script setup>
 import Coin from "./icons/Coin.vue";
-import BarChart from "./BarChart.vue";
+import BarChart from "@/components/BarChart.vue";
 
 const props = defineProps({
   chartData: Object,

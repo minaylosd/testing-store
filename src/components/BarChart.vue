@@ -109,7 +109,7 @@ const options = ref({
 const config = {
   type: "bar",
   data: {
-    labels: props.data.values.map(getName),
+    labels: props.data.labels,
     datasets: [
       {
         backgroundColor: props.data.values.map(getBackgroundColor),

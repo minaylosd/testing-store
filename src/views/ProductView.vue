@@ -22,7 +22,7 @@
             </div>
           </div>
 
-          <div class="hidden md:block">
+          <div class="hidden md-bar:block">
             <button
               v-if="isDeviceAdded && isUserProfileCompleted"
               class="py-[14px] px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
@@ -38,7 +38,9 @@
           </div>
         </div>
 
-        <div class="flex flex-col gap-5 mb-6 md:items-center md:flex-row">
+        <div
+          class="flex flex-col gap-5 mb-6 md-bar:items-center md-bar:flex-row"
+        >
           <div
             class="flex items-center gap-2 text-xs font-normal font-compact text-active"
           >
@@ -58,7 +60,7 @@
             </p>
           </div>
 
-          <div class="block md:hidden">
+          <div class="block md-bar:hidden">
             <button
               v-if="isDeviceAdded && isUserProfileCompleted"
               class="py-[14px] w-full px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
@@ -140,7 +142,7 @@
             </button>
           </div>
 
-          <div class="flex flex-col grid-cols-4 gap-6 md:grid">
+          <div class="flex flex-col grid-cols-4 gap-6 lg:grid">
             <AssignmentBtn
               v-for="(assignment, index) in assignments"
               :key="index"
