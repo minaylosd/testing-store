@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full mt-25">
+  <main class="w-full pt-25 bg-tertiary">
     <div class="px-4 mx-auto md:px-20 max-w-none md:max-w-388 2xl:px-9">
       <section class="w-full mb-[44px] md:px-6 md:mb-[182px]">
         <h1
@@ -10,7 +10,14 @@
 
         <div class="grid grid-cols-[1fr_2fr] gap-6">
           <TestOptions />
-          <ScaleForm />
+          <ScaleForm v-if="currentTest == 'scale'" />
+          <AudioForm v-else-if="currentTest == 'audio'" />
+          <PreferenceForm v-else-if="currentTest == 'preference'" />
+          <button
+            class="col-start-2 max-w-[131px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
+          >
+            Добавить
+          </button>
         </div>
       </section>
     </div>
@@ -18,8 +25,13 @@
 </template>
 
 <script setup>
-import TestOptions from "../components/TestOptions.vue";
-import ScaleForm from "../components/ScaleForm.vue";
+import TestOptions from "@/components/TestOptions.vue";
+import ScaleForm from "@/components/ScaleForm.vue";
+import PreferenceForm from "@/components/PreferenceForm.vue";
+import AudioForm from "@/components/AudioForm.vue";
+import { ref } from "vue";
+
+const currentTest = ref("preference");
 </script>
 
 <style scoped>
