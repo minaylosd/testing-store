@@ -1,34 +1,18 @@
 <template>
   <div
-    class="flex items-center justify-center w-full h-full p-6 overflow-auto bg-white rounded-xl"
+    class="flex items-center w-full h-full p-6 overflow-auto bg-white md-bar:justify-center rounded-xl"
   >
-    <div class="flex items-center md:justify-center w-[570px] h-[280px]">
-      <Bar v-if="chartData" :data="chartData" :options="chartOptions" />
+    <div
+      class="flex items-center md-bar:justify-center w-[570px] h-[280px] lg:w-full lg:h-full"
+    >
+      <canvas width="570" height="280" ref="barChart"> </canvas>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { Bar } from "vue-chartjs";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
-
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
+import { ref, onMounted, watch, onBeforeUnmount } from "vue";
+import Chart from "chart.js/auto";
 
 const props = defineProps({
   data: {
@@ -37,35 +21,36 @@ const props = defineProps({
   },
 });
 
-const chartData = computed(() => {
-  const getBackgroundColor = (value) => {
-    const percentage = (value / 100) * 100;
-    if (percentage < 30) return "#00724D";
-    if (percentage >= 30 && percentage < 70) return "#F37F19";
-    return "#FF0032";
-  };
+const getBackgroundColor = (value) => {
+  const percentage = (value / 100) * 100;
+  if (percentage < 30) return "#00724D";
+  if (percentage >= 30 && percentage < 70) return "#F37F19";
+  return "#FF0032";
+};
 
-  return {
-    labels: props.data.labels,
-    datasets: [
-      {
-        label: "Data",
-        backgroundColor: props.data.values.map(getBackgroundColor),
-        data: props.data.values,
-        barThickness: 15,
-      },
-    ],
-  };
-});
+const getName = (value) => {
+  const percentage = (value / 100) * 100;
+  if (percentage < 30) return "Низкая";
+  else if (percentage >= 30 && percentage < 70) return "Средняя";
+  else return "Высокая";
+};
 
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
+const checkWindow = () => {
+  return window.innerWidth > 1164;
+};
+
+const chartInstance = ref(null);
+const barChart = ref(null);
+
+const options = ref({
+  responsive: checkWindow ? true : false,
+  maintainAspectRatio: true,
   plugins: {
     legend: {
       display: true,
       position: "top",
-      align: "end",
+      align: checkWindow ? "start" : "end",
+      padding: 12,
       labels: {
         boxWidth: 16,
         boxHeight: 16,
@@ -75,15 +60,13 @@ const chartOptions = {
           weight: "regular",
           size: 17,
         },
-        generateLabels: function (chart) {
+        generateLabels: function () {
           const labels = ["Низкая", "Средняя", "Высокая"];
           const colors = ["#00724D", "#F37F19", "#FF0032"];
           return labels.map((label, index) => ({
             text: label,
             fillStyle: colors[index],
             strokeStyle: colors[index],
-            lineWidth: 1,
-            hidden: false,
           }));
         },
       },
@@ -121,5 +104,65 @@ const chartOptions = {
       },
     },
   },
+});
+
+const config = {
+  type: "bar",
+  data: {
+    labels: props.data.values.map(getName),
+    datasets: [
+      {
+        backgroundColor: props.data.values.map(getBackgroundColor),
+        data: props.data.values,
+        barThickness: 15,
+      },
+    ],
+  },
+  options: options.value,
+  plugins: [
+    {
+      id: "legendMargin",
+      beforeInit(chart = chartInstance.value, legend) {
+        const fitValue = chart.legend.fit;
+
+        chart.legend.fit = function () {
+          fitValue.bind(chart.legend)();
+          this.height += 20;
+        };
+      },
+    },
+  ],
 };
+
+const createChart = () => {
+  const ctx = barChart.value.getContext("2d");
+  if (chartInstance.value) {
+    chartInstance.value.destroy();
+  }
+
+  chartInstance.value = new Chart(ctx, config);
+};
+
+let resizeTimeout;
+
+const debouncedResize = () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    options.value.responsive = checkWindow ? true : false;
+    options.value.align = checkWindow ? "start" : "end";
+    createChart();
+  }, 500);
+};
+
+onMounted(() => {
+  createChart();
+
+  window.addEventListener("resize", debouncedResize);
+});
+
+watch(() => props.data, createChart, { deep: true });
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", debouncedResize);
+});
 </script>

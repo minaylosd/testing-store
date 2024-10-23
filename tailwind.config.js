@@ -21,6 +21,7 @@ module.exports = {
     },
     screens: {
       'md': '640px',
+      'md-bar': '874px',
       'lg': '1180px',
       'xl': '1280px',
       '2xl': '1536px',

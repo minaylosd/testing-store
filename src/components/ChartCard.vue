@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-6 pt-4 pb-6 mb-6 rounded-3xl bg-tertiary md:grid flex flex-col gap-[5%] grid-cols-[50%_45%]"
+    class="px-6 pt-4 pb-6 mb-6 rounded-3xl bg-tertiary lg:grid flex flex-col gap-[5%] grid-cols-[50%_45%]"
   >
     <div class="w-full">
       <div class="mb-8">
