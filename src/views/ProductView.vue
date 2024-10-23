@@ -157,8 +157,6 @@
 
 <script setup>
 import { ref } from "vue";
-import Coin from "../components/icons/Coin.vue";
-import BarChart from "../components/BarChart.vue";
 import ProductSlider from "../components/ProductSlider.vue";
 import ChartCard from "../components/ChartCard.vue";
 import AssignmentBtn from "../components/AssignmentBtn.vue";
