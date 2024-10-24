@@ -34,13 +34,35 @@
       >
 
       <div
-        class="relative flex w-full items-center px-3 py-3.5 border rounded-2xl border-divider/50 bg-tertiary mb-4"
+        @click="toggleDropdown"
+        class="relative flex w-full items-center px-3 py-3.5 border rounded-2xl border-divider/50 bg-tertiary mb-4 cursor-pointer"
       >
         <span
           class="flex w-full font-normal leading-6 font-compact text-17 text-greytxt bg-tertiary"
-          >{{ isAnyChecked ? selectedAnswer : "Выберите вариант ответа" }}</span
+          >{{
+            isAnyChecked ? answers[selectedAnswer] : "Выберите вариант ответа"
+          }}</span
         >
         <ChevronDown />
+
+        <div
+          v-if="isDropdownShown"
+          class="absolute left-0 w-full bg-white top-full translate-y-1 rounded-2xl p-1.5 shadow-[0px_12px_20px_0px_rgba(0,0,0,0.14),0px_4px_24px_0px_rgba(0,0,0,0.12)]"
+        >
+          <div
+            @click="updateRadio(index)"
+            class="w-full py-[14px] px-1.5 cursor-pointer"
+            v-for="(answer, index) in answers"
+            :key="index"
+          >
+            <label
+              class="font-normal leading-6 font-compact text-17 text-txt"
+              :for="'answer-' + index"
+              >{{ answer
+              }}<input type="radio" class="hidden" :id="'answer-' + index"
+            /></label>
+          </div>
+        </div>
       </div>
 
       <label
@@ -69,25 +91,18 @@
 import { ref } from "vue";
 import ChevronDown from "./icons/ChevronDown.vue";
 
-const answers = ref([
-  { value: 0, imgSrc: "/icons/0.svg" },
-  { value: 1, imgSrc: "/icons/1.svg" },
-  { value: 2, imgSrc: "/icons/2.svg" },
-  { value: 3, imgSrc: "/icons/3.svg" },
-  { value: 4, imgSrc: "/icons/4.svg" },
-  { value: 5, imgSrc: "/icons/5.svg" },
-  { value: 6, imgSrc: "/icons/6.svg" },
-  { value: 7, imgSrc: "/icons/7.svg" },
-  { value: 8, imgSrc: "/icons/8.svg" },
-  { value: 9, imgSrc: "/icons/9.svg" },
-]);
+const isDropdownShown = ref(false);
+const answers = ref(["Отдыхать", "Веселиться"]);
 
 const isAnyChecked = ref(false);
 const selectedAnswer = ref(null);
 
+function toggleDropdown() {
+  isDropdownShown.value = !isDropdownShown.value;
+}
+
 function updateRadio(answerId) {
   selectedAnswer.value = answerId;
-  console.log(selectedAnswer.value);
   isAnyChecked.value = true;
 }
 </script>

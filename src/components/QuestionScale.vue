@@ -52,21 +52,23 @@
       </li>
     </ul>
 
-    <div class="flex gap-3 mb-8">
-      <p class="text-sm font-compact font-regular text-greytxt">Очень плохо</p>
+    <div class="flex gap-5 mb-8">
+      <p class="mt-3 text-sm font-compact font-regular text-greytxt">
+        Очень плохо
+      </p>
 
       <div>
         <input
-          class="w-[552px]"
+          class="w-[552px] mb-6"
           min="0"
           max="9"
           step="1"
           type="range"
           list="values"
         />
-        <datalist class="flex justify-between w-full" id="values">
+        <datalist class="flex justify-between w-[552px]" id="values">
           <option
-            class="text-sm font-normal font-compact text-greytxt"
+            class="p-0 text-sm font-normal font-compact text-greytxt"
             v-for="answer in answers"
             :value="answer.value"
             :key="answer.value"
@@ -75,7 +77,9 @@
         </datalist>
       </div>
 
-      <p class="text-sm font-compact font-regular text-greytxt">Очень хорошо</p>
+      <p class="mt-3 text-sm font-compact font-regular text-greytxt">
+        Очень хорошо
+      </p>
     </div>
 
     <div class="px-3 mb-6 w-100">
@@ -126,7 +130,6 @@ const selectedAnswer = ref(null);
 
 function updateRadio(answerId) {
   selectedAnswer.value = answerId;
-  console.log(selectedAnswer.value);
   isAnyChecked.value = true;
 }
 </script>
@@ -137,7 +140,6 @@ input[type="range"] {
   appearance: none;
   height: 4px;
   outline: none;
-  overflow: hidden;
   border-radius: 2px;
 }
 
@@ -158,9 +160,11 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 32px;
   height: 32px;
+  margin-top: -16px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: -532px 0 0 532px #ff0032;
   cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08),
+    0px 4px 24px 0px rgba(0, 0, 0, 0.12);
 }
 </style>

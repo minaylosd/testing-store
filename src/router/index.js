@@ -38,6 +38,11 @@ const router = new VueRouter({
       name: 'question',
       component: () => import('../views/TestQuestion.vue')
     },
+    {
+      path: '/report',
+      name: 'report',
+      component: () => import('../views/TestReportView.vue')
+    },
   ]
 })
 
