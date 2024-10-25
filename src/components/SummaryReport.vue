@@ -16,7 +16,7 @@
         <img class="object-cover w-full h-auto" src="/test-img.jpg" alt="" />
       </div>
 
-      <div v-else class="flex items-center gap-3 mb-6">
+      <div v-else-if="question == 'audio'" class="flex items-center gap-3 mb-6">
         <img class="h-auto w-[314px] rounded-3xl" src="/audio-question.svg" />
 
         <button class="bg-tertiary p-2.5 rounded-2xl">

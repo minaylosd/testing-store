@@ -10,14 +10,17 @@
 
         <div class="grid grid-cols-[1fr_2fr] gap-6">
           <TestOptions />
-          <ScaleForm v-if="currentTest == 'scale'" />
-          <AudioForm v-else-if="currentTest == 'audio'" />
-          <PreferenceForm v-else-if="currentTest == 'preference'" />
-          <button
-            class="col-start-2 max-w-[131px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
-          >
-            Добавить
-          </button>
+          <div class="flex flex-col gap-8">
+            <ScaleForm v-if="currentTest == 'scale'" />
+            <AudioForm v-else-if="currentTest == 'audio'" />
+            <PreferenceForm v-else-if="currentTest == 'preference'" />
+
+            <button
+              class="max-w-[131px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
+            >
+              Добавить
+            </button>
+          </div>
         </div>
       </section>
     </div>

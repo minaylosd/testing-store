@@ -45,7 +45,7 @@
           type="text"
           id="question"
           value="Оцените изображение по шкале"
-          class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-white mb-2"
+          class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
           required
         />
 
@@ -70,7 +70,7 @@
           type="text"
           id="minimum"
           placeholder="Напр., очень плохо"
-          class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-white mb-2"
+          class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
           required
         />
 
@@ -83,7 +83,7 @@
           type="text"
           id="maximum"
           placeholder="Напр., очень хорошо"
-          class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-white mb-2"
+          class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
           required
         />
 
