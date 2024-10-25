@@ -46,7 +46,8 @@ const data = ref([
 const totalRespondents = ref(10);
 
 const getPercentage = (value) => {
-  return ((value / totalRespondents.value) * 100).toFixed(2);
+  const percentage = Math.round((value / totalRespondents.value) * 100);
+  return percentage;
 };
 
 const createChart = () => {
@@ -61,9 +62,24 @@ const createChart = () => {
           data: data.value.map((item) => getPercentage(item.amount)),
           backgroundColor: "#FF0032",
           barThickness: 15,
+          datalabels: {
+            anchor: "end",
+            align: "end",
+            font: {
+              family: "MTS Compact",
+              weight: "400",
+              size: 17,
+            },
+            formatter: (value, context) => {
+              const amount = data.value[context.dataIndex].amount;
+              const percentage = getPercentage(amount);
+              return `${percentage}% (${amount})`;
+            },
+          },
         },
       ],
     },
+    plugins: [ChartDataLabels],
     options: {
       responsive: true,
       maintainAspectRatio: true,
