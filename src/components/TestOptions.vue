@@ -90,13 +90,23 @@
     </div>
 
     <button
-      class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-tertiary rounded-2xl bg-white mb-[14px]"
+      class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-inactive rounded-2xl bg-white mb-[14px]"
+    >
+      Настроить условные операторы
+    </button>
+
+    <button
+      class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-inactive rounded-2xl bg-white mb-[14px]"
     >
       Превью
     </button>
 
     <button
-      class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
+      :class="[
+        'px-[22px] py-[18px] text-xs w-full font-bold tracking-wider uppercase font-wide rounded-2xl self-end',
+        !isFormFilled ? 'bg-divider/50 text-inactive' : 'bg-brand text-white',
+      ]"
+      :disabled="!isFormFilled"
     >
       Отправить на модерацию
     </button>
@@ -104,8 +114,11 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import InfoIcon from "../components/icons/InfoIcon.vue";
 import Coin from "../components/icons/Coin.vue";
+
+const isFormFilled = ref(false);
 </script>
 
 <style scoped>
@@ -124,9 +137,12 @@ import Coin from "../components/icons/Coin.vue";
 .custom-checkbox + label::before {
   content: "";
   background-image: url("/icons/Checkbox-unchecked.svg");
+  background-repeat: no-repeat;
   display: inline-block;
   width: 24px;
   height: 24px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .custom-checkbox:checked + label::before {

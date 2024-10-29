@@ -1,5 +1,13 @@
 <template>
-  <div class="grid grid-cols-4 col-span-2 gap-6">
+  <div v-if="type == 'click'" class="grid grid-cols-3 col-span-2 gap-6">
+    <div v-for="(answer, index) in answers" :key="index">
+      <AnswerCardClick :answer="answer" />
+    </div>
+  </div>
+  <div class="col-span-2" v-else-if="type == 'prototype'">
+    <AnswerCardPrototype />
+  </div>
+  <div v-else class="grid grid-cols-4 col-span-2 gap-6">
     <div v-for="(answer, index) in answers" :key="index">
       <AnswerCardImg
         v-if="type == 'img'"
@@ -7,6 +15,8 @@
         :showOverlay="showOverlay"
       />
       <AnswerCardEmoji v-else-if="type == 'emoji'" :answer="answer" />
+      <AnswerCardSort v-else-if="type == 'sort'" :answer="answer" />
+      <AnswerCardClick v-else-if="type == 'click'" :answer="answer" />
       <AnswerCard v-else :answer="answer" />
     </div>
     <ImageOverlay
@@ -22,6 +32,9 @@ import AnswerCard from "./AnswerCard.vue";
 import AnswerCardImg from "./AnswerCardImg.vue";
 import AnswerCardEmoji from "./AnswerCardEmoji.vue";
 import ImageOverlay from "./ImageOverlay.vue";
+import AnswerCardSort from "./AnswerCardSort.vue";
+import AnswerCardClick from "./AnswerCardClick.vue";
+import AnswerCardPrototype from "./AnswerCardPrototype.vue";
 
 const answers = ref([
   { respondent: 1, value: "Ответ", imgSrc: "/test-img.jpg" },
@@ -43,5 +56,5 @@ const closeOverlay = () => {
   overlayShown.value = false;
 };
 
-const type = ref("img");
+const type = ref("prototype");
 </script>

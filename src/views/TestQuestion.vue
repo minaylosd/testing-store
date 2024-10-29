@@ -4,6 +4,10 @@
       <QuestionScale v-if="currentTest == 'scale'" :useEmoji="useEmoji" />
       <QuestionAudio v-else-if="currentTest == 'audio'" />
       <QuestionPreference v-else-if="currentTest == 'preference'" />
+      <QuestionTimer v-else-if="currentTest == 'timer'" />
+      <QuestionSort v-else-if="currentTest == 'sort'" />
+      <QuestionFirstClick v-else-if="currentTest == 'click'" />
+      <QuestionPrototype v-else-if="currentTest == 'prototype'" />
     </div>
   </main>
 </template>
@@ -13,7 +17,11 @@ import { ref } from "vue";
 import QuestionScale from "@/components/QuestionScale.vue";
 import QuestionAudio from "@/components/QuestionAudio.vue";
 import QuestionPreference from "@/components/QuestionPreference.vue";
+import QuestionTimer from "@/components/QuestionTimer.vue";
+import QuestionSort from "@/components/QuestionSort.vue";
+import QuestionFirstClick from "@/components/QuestionFirstClick.vue";
+import QuestionPrototype from "@/components/QuestionPrototype.vue";
 
-const currentTest = ref("preference");
+const currentTest = ref("sort");
 const useEmoji = ref(false);
 </script>

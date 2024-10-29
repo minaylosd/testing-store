@@ -23,10 +23,6 @@
     <div class="w-full">
       <div class="flex items-center justify-end gap-2 mb-4">
         <button class="bg-tertiary p-2.5 rounded-2xl">
-          <img src="/icons/administrator.svg" alt="" />
-        </button>
-
-        <button class="bg-tertiary p-2.5 rounded-2xl">
           <img src="/icons/copy-btn.svg" alt="" />
         </button>
 
@@ -131,9 +127,12 @@
 .custom-checkbox + label::before {
   content: "";
   background-image: url("/icons/Checkbox-unchecked.svg");
+  background-repeat: no-repeat;
   display: inline-block;
   width: 24px;
   height: 24px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .custom-checkbox:checked + label::before {

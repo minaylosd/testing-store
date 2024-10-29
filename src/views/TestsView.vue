@@ -14,6 +14,10 @@
             <ScaleForm v-if="currentTest == 'scale'" />
             <AudioForm v-else-if="currentTest == 'audio'" />
             <PreferenceForm v-else-if="currentTest == 'preference'" />
+            <TimerForm v-else-if="currentTest == 'timer'" />
+            <SortForm v-else-if="currentTest == 'sort'" />
+            <FirstClickForm v-else-if="currentTest == 'click'" />
+            <PrototypeForm v-else-if="currentTest == 'prototype'" />
 
             <button
               class="max-w-[131px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
@@ -32,33 +36,11 @@ import TestOptions from "@/components/TestOptions.vue";
 import ScaleForm from "@/components/ScaleForm.vue";
 import PreferenceForm from "@/components/PreferenceForm.vue";
 import AudioForm from "@/components/AudioForm.vue";
+import TimerForm from "@/components/TimerForm.vue";
+import SortForm from "@/components/SortForm.vue";
+import FirstClickForm from "@/components/FirstClickForm.vue";
+import PrototypeForm from "@/components/PrototypeForm.vue";
 import { ref } from "vue";
 
-const currentTest = ref("preference");
+const currentTest = ref("audio");
 </script>
-
-<style scoped>
-.custom-checkbox {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-
-.custom-checkbox + label {
-  display: inline-flex;
-  align-items: center;
-  user-select: none;
-  cursor: pointer;
-}
-.custom-checkbox + label::before {
-  content: "";
-  background-image: url("/icons/Checkbox-unchecked.svg");
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-}
-
-.custom-checkbox:checked + label::before {
-  background-image: url("/icons/Checkbox-checked.svg");
-}
-</style>

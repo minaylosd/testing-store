@@ -17,7 +17,8 @@ module.exports = {
       'greyfooter': '#9198a0',
       'accent': '#007cff',
       'positive': '#26cd58',
-      'active': '#12b23f'
+      'active': '#12b23f',
+      'inactive': '#969FA8'
     },
     screens: {
       'md': '640px',

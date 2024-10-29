@@ -17,7 +17,7 @@
         <p class="mb-3 font-medium leading-6 text-black text-17 font-compact">
           Файлы для загрузки
         </p>
-        <div class="flex items-center gap-3">
+        <div class="flex flex-wrap items-center gap-3">
           <button
             class="py-[14px] px-3 md:px-6 text-17 leading-6 font-medium font-compact text-white rounded-lg bg-brand"
           >

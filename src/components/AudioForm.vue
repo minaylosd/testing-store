@@ -23,10 +23,6 @@
     <div class="w-full">
       <div class="flex items-center justify-end gap-2 mb-4">
         <button class="bg-tertiary p-2.5 rounded-2xl">
-          <img src="/icons/administrator.svg" alt="" />
-        </button>
-
-        <button class="bg-tertiary p-2.5 rounded-2xl">
           <img src="/icons/copy-btn.svg" alt="" />
         </button>
 
@@ -84,9 +80,15 @@
           type="text"
           id="answer-two"
           placeholder="Введите ответ на вопрос"
-          class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
+          class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-3"
           required
         />
+
+        <button
+          class="text-[#0070e5] text-17 font-normal font-compact leading-normal mb-3"
+        >
+          Добавить вариант ответа
+        </button>
 
         <input
           type="checkbox"
@@ -156,9 +158,12 @@
 .custom-checkbox + label::before {
   content: "";
   background-image: url("/icons/Checkbox-unchecked.svg");
+  background-repeat: no-repeat;
   display: inline-block;
   width: 24px;
   height: 24px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .custom-checkbox:checked + label::before {

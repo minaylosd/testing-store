@@ -6,10 +6,6 @@
 
     <div class="flex items-center justify-end gap-2 mb-4">
       <button class="bg-tertiary p-2.5 rounded-2xl">
-        <img src="/icons/administrator.svg" alt="" />
-      </button>
-
-      <button class="bg-tertiary p-2.5 rounded-2xl">
         <img src="/icons/copy-btn.svg" alt="" />
       </button>
 

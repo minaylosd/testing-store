@@ -4,7 +4,11 @@
       Всего проголосовало <span>{{ totalRespondents }}</span> респондентов
     </p>
 
-    <div class="w-full p-6 bg-white rounded-3xl">
+    <ReportSort v-if="question == 'sort'" />
+    <ReportClick v-else-if="question == 'click'" />
+    <ReportPrototype v-else-if="question == 'prototype'" />
+
+    <div v-else class="w-full p-6 bg-white rounded-3xl">
       <h2 class="mb-4 text-xl font-medium leading-6 text-txt font-wide">
         Шкала
       </h2>
@@ -23,7 +27,66 @@
           <img src="/icons/sound.svg" alt="" />
         </button>
       </div>
-      <canvas width="1200" height="400" ref="reportChart"></canvas>
+
+      <div class="flex gap-6" v-else-if="question == 'timer'">
+        <img
+          class="object-cover w-full h-auto rounded-3xl"
+          src="/test-img.jpg"
+          alt=""
+        />
+        <div class="flex flex-col w-full gap-4">
+          <div>
+            <label
+              for="answer-1"
+              class="block mb-1 text-sm font-normal font-compact text-greytxt"
+              >Ответ</label
+            >
+            <input
+              type="text"
+              id="answer-1"
+              value="Кисти"
+              disabled
+              class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
+            />
+          </div>
+
+          <div>
+            <label
+              for="answer-2"
+              class="block mb-1 text-sm font-normal font-compact text-greytxt"
+              >Ответ</label
+            >
+            <input
+              type="text"
+              id="answer-2"
+              value="Краски"
+              disabled
+              class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
+            />
+          </div>
+
+          <div>
+            <label
+              for="answer-3"
+              class="block mb-1 text-sm font-normal font-compact text-greytxt"
+              >Ответ</label
+            >
+            <input
+              type="text"
+              id="answer-3"
+              value="Ничего"
+              disabled
+              class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
+            />
+          </div>
+        </div>
+      </div>
+      <canvas
+        v-if="question != 'timer'"
+        width="1200"
+        height="400"
+        ref="reportChart"
+      ></canvas>
     </div>
   </div>
 </template>
@@ -32,10 +95,19 @@
 import { ref, onMounted } from "vue";
 import { Chart } from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import ReportSort from "@/components/ReportSort.vue";
+import ReportClick from "@/components/ReportClick.vue";
+import ReportPrototype from "@/components/ReportPrototype.vue";
+
+const isDropdownShown = ref(false);
+
+function toggleDropdown() {
+  isDropdownShown.value = !isDropdownShown.value;
+}
 
 const reportChart = ref(null);
 
-const question = ref("audio");
+const question = ref("prototype");
 
 const data = ref([
   { answer: "Отдыхать", amount: 2 },
@@ -132,6 +204,8 @@ const createChart = () => {
 };
 
 onMounted(() => {
-  createChart();
+  if (question.value != "timer") {
+    createChart();
+  }
 });
 </script>
