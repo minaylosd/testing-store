@@ -18,7 +18,8 @@ module.exports = {
       'accent': '#007cff',
       'positive': '#26cd58',
       'active': '#12b23f',
-      'inactive': '#969FA8'
+      'inactive': '#969FA8',
+      'badgeprogress': '#f95721'
     },
     screens: {
       'md': '640px',

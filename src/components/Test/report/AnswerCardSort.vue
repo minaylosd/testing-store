@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import SortDropdown from "@/components/SortDropdown.vue";
+import SortDropdown from "@/components/Test/report/SortDropdown.vue";
 
 const props = defineProps({
   answer: Object,

@@ -95,9 +95,9 @@
 import { ref, onMounted } from "vue";
 import { Chart } from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import ReportSort from "@/components/ReportSort.vue";
-import ReportClick from "@/components/ReportClick.vue";
-import ReportPrototype from "@/components/ReportPrototype.vue";
+import ReportSort from "@/components/Test/report/ReportSort.vue";
+import ReportClick from "@/components/Test/report/ReportClick.vue";
+import ReportPrototype from "@/components/Test/report/ReportPrototype.vue";
 
 const isDropdownShown = ref(false);
 

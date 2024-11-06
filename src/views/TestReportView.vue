@@ -21,62 +21,48 @@
         </div>
 
         <div class="flex gap-6">
-          <div class="relative py-[14px] px-0.5">
+          <div @click="showModeration" class="relative py-[14px] px-0.5">
             <p class="font-medium leading-6 text-17 text-txt font-compact">
               Модерация
             </p>
-          </div>
-
-          <div class="relative py-[14px] px-0.5">
-            <p class="font-medium leading-6 text-17 text-txt font-compact">
-              Аудитория
-            </p>
-          </div>
-
-          <div class="relative py-[14px] px-0.5">
-            <p class="font-medium leading-6 text-17 text-txt font-compact">
-              Отчетность
-            </p>
             <div
+              v-show="inView == 'moderation'"
               class="w-full absolute bottom-0 h-0.5 bg-brand rounded-[1px]"
             ></div>
           </div>
-        </div>
 
-        <button
-          class="justify-self-end px-[51px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
-        >
-          Выгрузка
-        </button>
+          <div @click="showAudience" class="relative py-[14px] px-0.5">
+            <p class="font-medium leading-6 text-17 text-txt font-compact">
+              Аудитория
+            </p>
+            <div
+              v-show="inView == 'audience'"
+              class="w-full absolute bottom-0 h-0.5 bg-brand rounded-[1px]"
+            ></div>
+          </div>
 
-        <div class="flex col-span-2 gap-4">
-          <div
-            @click="showReport"
-            class="relative py-1.5 px-0.5 cursor-pointer"
-          >
-            <p class="text-sm font-medium text-txt font-compact">
-              Сводный отчет
+          <div @click="showReport" class="relative py-[14px] px-0.5">
+            <p class="font-medium leading-6 text-17 text-txt font-compact">
+              Отчетность
             </p>
             <div
               v-show="inView == 'report'"
               class="w-full absolute bottom-0 h-0.5 bg-brand rounded-[1px]"
             ></div>
           </div>
-
-          <div
-            @click="showAnswers"
-            class="relative py-1.5 px-0.5 cursor-pointer"
-          >
-            <p class="text-sm font-medium text-txt font-compact">Ответы</p>
-            <div
-              v-show="inView == 'answers'"
-              class="w-full absolute bottom-0 h-0.5 bg-brand rounded-[1px]"
-            ></div>
-          </div>
         </div>
 
-        <SummaryReport v-if="inView == 'report'" />
-        <AllAnswers v-else />
+        <button
+          @click="showModal"
+          class="justify-self-end px-[51px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
+        >
+          Выгрузка
+        </button>
+
+        <ModerationTab v-if="inView == 'moderation'" />
+        <AudienceTab v-if="inView == 'audience'" />
+        <ReportTab v-else-if="inView == 'report'" />
+        <ExtractModal v-if="isModalShown" :closeModal="closeModal" />
       </div>
     </div>
   </main>
@@ -84,16 +70,31 @@
 
 <script setup>
 import { ref } from "vue";
-import SummaryReport from "../components/SummaryReport.vue";
-import AllAnswers from "../components/AllAnswers.vue";
+import ModerationTab from "@/components/Test/ModerationTab.vue";
+import ReportTab from "@/components/Test/ReportTab.vue";
+import AudienceTab from "@/components/Test/AudienceTab.vue";
+import ExtractModal from "@/components/Test/ExtractModal.vue";
 
-const inView = ref("report");
+const inView = ref("audience");
+const isModalShown = ref(false);
 
 function showReport() {
   inView.value = "report";
 }
 
-function showAnswers() {
-  inView.value = "answers";
+function showAudience() {
+  inView.value = "audience";
+}
+
+function showModeration() {
+  inView.value = "moderation";
+}
+
+function showModal() {
+  isModalShown.value = true;
+}
+
+function closeModal() {
+  isModalShown.value = false;
 }
 </script>
