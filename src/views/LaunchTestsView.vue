@@ -22,6 +22,7 @@
                 Давайте создадим ваш первый тест
               </p>
               <button
+                @click="openConstructor"
                 class="px-[22px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
               >
                 Создать
@@ -42,7 +43,7 @@ import { ref } from "vue";
 import TestConstructor from "@/components/launch-tests/TestConstructor.vue";
 import TestStatusList from "@/components/launch-tests/TestStatusList.vue";
 
-const isConstructorOpened = ref(false);
+const isConstructorOpened = ref(true);
 
 const openConstructor = () => {
   isConstructorOpened.value = true;

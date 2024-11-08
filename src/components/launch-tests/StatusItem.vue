@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import StatusItemBadge from "@/components/launch-test/StatusItemBadge.vue";
+import StatusItemBadge from "./StatusItemBadge.vue";
 import StatusItemBtn from "@/components/StatusItemBtn.vue";
 const props = defineProps({
   item: Object,

@@ -8,8 +8,20 @@
 
     <div class="grid grid-cols-[1fr_2fr] gap-6">
       <TestOptions />
-      <div v-if="!currentTest">
-        <div class="grid grid-cols-2 gap-6">
+      <div class="flex flex-col gap-8">
+        <div
+          v-if="tests.length > 0 && testsVisible"
+          class="flex flex-col gap-8"
+        >
+          <TestForm v-for="(test, index) in tests" :test="test" :key="index" />
+          <button
+            @click="hideTests"
+            class="max-w-[131px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide bg-white rounded-2xl text-txt"
+          >
+            Свернуть
+          </button>
+        </div>
+        <form class="grid grid-cols-2 gap-6">
           <div
             v-for="(variant, index) in variants"
             @click="selectTest(variant.name)"
@@ -17,7 +29,8 @@
             class="p-5 bg-white border border-solid rounded-3xl border-divider/50"
           >
             <input
-              type="checkbox"
+              type="radio"
+              :name="'test-variant'"
               :id="'variant-' + index"
               class="option custom-checkbox"
             />
@@ -32,19 +45,10 @@
               {{ variant.text }}
             </p>
           </div>
-        </div>
-      </div>
-      <div v-else class="flex flex-col gap-8">
-        <OpenQuestionForm v-if="currentTest == 'open'" />
-        <ScaleForm v-else-if="currentTest == 'scale'" />
-        <AudioForm v-else-if="currentTest == 'select'" />
-        <PreferenceForm v-else-if="currentTest == 'preference'" />
-        <TimerForm v-else-if="currentTest == 'timer'" />
-        <SortForm v-else-if="currentTest == 'sort'" />
-        <FirstClickForm v-else-if="currentTest == 'click'" />
-        <PrototypeForm v-else-if="currentTest == 'prototype'" />
+        </form>
 
         <button
+          @click="addTest"
           class="max-w-[131px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-white rounded-2xl bg-brand"
         >
           Добавить
@@ -56,16 +60,11 @@
 <script setup>
 import { ref } from "vue";
 import TestOptions from "@/components/TestOptions.vue";
-import ScaleForm from "@/components/ScaleForm.vue";
-import PreferenceForm from "@/components/PreferenceForm.vue";
-import AudioForm from "@/components/AudioForm.vue";
-import TimerForm from "@/components/TimerForm.vue";
-import SortForm from "@/components/SortForm.vue";
-import FirstClickForm from "@/components/FirstClickForm.vue";
-import PrototypeForm from "@/components/PrototypeForm.vue";
-import OpenQuestionForm from "@/components/OpenQuestionForm.vue";
+import TestForm from "./TestForm.vue";
 
-const currentTest = ref(null);
+const tests = ref([]);
+const testsVisible = ref(false);
+const currentTest = ref("open");
 const variants = ref([
   {
     name: "open",
@@ -111,6 +110,15 @@ const variants = ref([
 
 const selectTest = (test) => {
   currentTest.value = test;
+};
+
+const addTest = (test) => {
+  tests.value = [...tests.value, currentTest.value];
+  testsVisible.value = true;
+};
+
+const hideTests = () => {
+  testsVisible.value = false;
 };
 </script>
 
