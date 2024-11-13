@@ -7,7 +7,7 @@
     </h1>
 
     <div class="grid grid-cols-[1fr_2fr] gap-6">
-      <TestOptions />
+      <TestOptions :openOperators="openOperators" :tests="tests" />
       <div class="flex flex-col gap-8">
         <div
           v-if="tests.length > 0 && testsVisible"
@@ -55,14 +55,35 @@
         </button>
       </div>
     </div>
+    <ConditionalOperators
+      :closeOperators="closeOperators"
+      :questions="questions"
+      v-if="isOperatorsOpen"
+    />
   </section>
 </template>
 <script setup>
 import { ref } from "vue";
 import TestOptions from "@/components/TestOptions.vue";
 import TestForm from "./TestForm.vue";
+import ConditionalOperators from "./ConditionalOperators.vue";
+
+const questions = [
+  { txt: "Насколько вы любите свою работу?", type: "scale" },
+  {
+    txt: "Вы делаете перерывы на обед?",
+    type: "select",
+    options: ["Да", "Нет"],
+  },
+  {
+    txt: "Что вы предпочитаете делать в перерыве на обед?",
+    type: "preference",
+    options: ["Option 1", "Option 2"],
+  },
+];
 
 const tests = ref([]);
+const isOperatorsOpen = ref(false);
 const testsVisible = ref(false);
 const currentTest = ref("open");
 const variants = ref([
@@ -107,6 +128,20 @@ const variants = ref([
     text: "Протестируйте ваш прототип",
   },
 ]);
+
+const openOperators = () => {
+  if (tests.value.length > 0) {
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
+    isOperatorsOpen.value = true;
+  }
+};
+
+const closeOperators = () => {
+  isOperatorsOpen.value = false;
+  const body = document.querySelector("body");
+  body.style.overflow = "auto";
+};
 
 const selectTest = (test) => {
   currentTest.value = test;
