@@ -36,6 +36,10 @@ import AnswerCardClick from "./AnswerCardClick.vue";
 import AnswerCardPrototype from "./AnswerCardPrototype.vue";
 import ImageOverlay from "@/components/ImageOverlay.vue";
 
+const props = defineProps({
+  question: Object,
+});
+
 const answers = ref([
   { respondent: 1, value: "Ответ", imgSrc: "/test-img.jpg" },
   { respondent: 2, value: "Ответ", imgSrc: "/test-img.jpg" },
@@ -56,5 +60,5 @@ const closeOverlay = () => {
   overlayShown.value = false;
 };
 
-const type = ref("prototype");
+const type = props.question.type;
 </script>

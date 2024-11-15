@@ -4,9 +4,9 @@
       Всего проголосовало <span>{{ totalRespondents }}</span> респондентов
     </p>
 
-    <ReportSort v-if="question == 'sort'" />
-    <ReportClick v-else-if="question == 'click'" />
-    <ReportPrototype v-else-if="question == 'prototype'" />
+    <ReportSort v-if="type == 'sort'" />
+    <ReportClick v-else-if="type == 'click'" />
+    <ReportPrototype v-else-if="type == 'prototype'" />
 
     <div v-else class="w-full p-6 bg-white rounded-3xl">
       <h2 class="mb-4 text-xl font-medium leading-6 text-txt font-wide">
@@ -14,13 +14,13 @@
       </h2>
 
       <div
-        v-if="question == 'scale'"
+        v-if="type == 'scale'"
         class="w-[584px] h-[300px] overflow-hidden rounded-3xl flex items-center mb-6"
       >
         <img class="object-cover w-full h-auto" src="/test-img.jpg" alt="" />
       </div>
 
-      <div v-else-if="question == 'audio'" class="flex items-center gap-3 mb-6">
+      <div v-else-if="type == 'audio'" class="flex items-center gap-3 mb-6">
         <img class="h-auto w-[314px] rounded-3xl" src="/audio-question.svg" />
 
         <button class="bg-tertiary p-2.5 rounded-2xl">
@@ -28,7 +28,7 @@
         </button>
       </div>
 
-      <div class="flex gap-6" v-else-if="question == 'timer'">
+      <div class="flex gap-6" v-else-if="type == 'timer'">
         <img
           class="object-cover w-full h-auto rounded-3xl"
           src="/test-img.jpg"
@@ -82,7 +82,7 @@
         </div>
       </div>
       <canvas
-        v-if="question != 'timer'"
+        v-if="type != 'timer'"
         width="1200"
         height="400"
         ref="reportChart"
@@ -99,6 +99,10 @@ import ReportSort from "@/components/Test/report/ReportSort.vue";
 import ReportClick from "@/components/Test/report/ReportClick.vue";
 import ReportPrototype from "@/components/Test/report/ReportPrototype.vue";
 
+const props = defineProps({
+  question: Object,
+});
+
 const isDropdownShown = ref(false);
 
 function toggleDropdown() {
@@ -107,7 +111,7 @@ function toggleDropdown() {
 
 const reportChart = ref(null);
 
-const question = ref("prototype");
+const type = props.question.type;
 
 const data = ref([
   { answer: "Отдыхать", amount: 2 },
@@ -204,7 +208,7 @@ const createChart = () => {
 };
 
 onMounted(() => {
-  if (question.value != "timer") {
+  if (type != "timer") {
     createChart();
   }
 });
