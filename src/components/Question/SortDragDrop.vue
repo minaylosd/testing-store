@@ -53,13 +53,10 @@
         <div
           class="grid grid-cols-3 gap-4 border border-solid rounded-3xl border-divider/50 min-h-[528px]"
         >
-          <draggable
-            @change="log"
-            :list="groups[0].list"
-            group="items"
-            class="flex flex-col justify-between px-8 py-4 border-r border-solid border-divider/50"
+          <div
+            class="flex flex-col justify-between h-full px-8 py-4 border-r border-solid grow border-divider/50"
           >
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col h-full gap-4">
               <div v-if="openType">
                 <label
                   for="category-1"
@@ -81,7 +78,12 @@
                 Животные
               </p>
 
-              <div class="flex flex-col min-h-full gap-4 grow">
+              <draggable
+                @change="log"
+                :list="groups[0].list"
+                group="items"
+                class="flex flex-col min-h-full gap-4 h-fit grow"
+              >
                 <div
                   v-for="(item, index) in groups[0].list"
                   :key="index"
@@ -98,7 +100,7 @@
                     {{ item.name }}
                   </p>
                 </div>
-              </div>
+              </draggable>
             </div>
 
             <button
@@ -107,15 +109,12 @@
             >
               <img src="/icons/delete.svg" alt="" />
             </button>
-          </draggable>
+          </div>
 
-          <draggable
-            @change="log"
-            :list="groups[1].list"
-            group="items"
-            class="flex flex-col justify-between px-8 py-4 border-r border-solid border-divider/50"
+          <div
+            class="flex flex-col justify-between h-full px-8 py-4 border-r border-solid grow border-divider/50"
           >
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col h-full gap-4">
               <div v-if="openType">
                 <label
                   for="category-1"
@@ -137,7 +136,12 @@
                 Животные
               </p>
 
-              <div class="flex flex-col min-h-full gap-4 grow">
+              <draggable
+                @change="log"
+                :list="groups[1].list"
+                group="items"
+                class="flex flex-col min-h-full gap-4 h-fit grow"
+              >
                 <div
                   v-for="(item, index) in groups[1].list"
                   :key="index"
@@ -154,7 +158,7 @@
                     {{ item.name }}
                   </p>
                 </div>
-              </div>
+              </draggable>
             </div>
 
             <button
@@ -163,15 +167,12 @@
             >
               <img src="/icons/delete.svg" alt="" />
             </button>
-          </draggable>
+          </div>
 
-          <draggable
-            @change="log"
-            :list="groups[2].list"
-            group="items"
-            class="flex flex-col justify-between px-8 py-4 border-r border-solid border-divider/50"
+          <div
+            class="flex flex-col justify-between h-full px-8 py-4 border-r border-solid grow border-divider/50"
           >
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col h-full gap-4">
               <div v-if="openType">
                 <label
                   for="category-1"
@@ -193,7 +194,12 @@
                 Животные
               </p>
 
-              <div class="flex flex-col min-h-full gap-4 grow">
+              <draggable
+                @change="log"
+                :list="groups[2].list"
+                group="items"
+                class="flex flex-col min-h-full gap-4 h-fit grow"
+              >
                 <div
                   v-for="(item, index) in groups[2].list"
                   :key="index"
@@ -210,7 +216,7 @@
                     {{ item.name }}
                   </p>
                 </div>
-              </div>
+              </draggable>
             </div>
 
             <button
@@ -219,7 +225,7 @@
             >
               <img src="/icons/delete.svg" alt="" />
             </button>
-          </draggable>
+          </div>
         </div>
       </div>
 
