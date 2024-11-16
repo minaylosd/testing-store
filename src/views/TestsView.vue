@@ -1,7 +1,7 @@
 <template>
   <main class="w-full pt-25 bg-tertiary">
     <div class="px-4 mx-auto md:px-20 max-w-none md:max-w-388 2xl:px-9">
-      <section class="w-full mb-[44px] md:px-6 md:mb-[182px]">
+      <section class="w-full md:px-6">
         <h1
           class="mb-8 text-4xl font-medium text-black md:leading-none font-wide md:text-heading"
         >
@@ -11,6 +11,7 @@
         <div class="grid grid-cols-[1fr_2fr] gap-6">
           <TestOptions />
           <div class="flex flex-col gap-8">
+            <OpenQuestionForm v-if="currentTest == 'open'" />
             <ScaleForm v-if="currentTest == 'scale'" />
             <AudioForm v-else-if="currentTest == 'audio'" />
             <PreferenceForm v-else-if="currentTest == 'preference'" />
@@ -40,6 +41,7 @@ import TimerForm from "@/components/TimerForm.vue";
 import SortForm from "@/components/SortForm.vue";
 import FirstClickForm from "@/components/FirstClickForm.vue";
 import PrototypeForm from "@/components/PrototypeForm.vue";
+import OpenQuestionForm from "@/components/OpenQuestionForm.vue";
 import { ref } from "vue";
 
 const currentTest = ref("audio");

@@ -1,0 +1,61 @@
+<template>
+  <div>
+    <div
+      @click="toggleDropdown"
+      class="relative flex w-full items-center px-3 py-3.5 border rounded-2xl border-divider/50 bg-tertiary cursor-pointer"
+    >
+      <span
+        class="flex w-full h-6 overflow-hidden font-normal leading-6 font-compact text-17 text-greytxt bg-tertiary"
+        >{{ !isSet ? "Не выбраны" : props.questions[dropdownOption].txt }}</span
+      >
+      <ChevronDown />
+
+      <div
+        v-if="isDropdownShown"
+        class="absolute z-10 left-0 w-full bg-white top-full translate-y-1 rounded-2xl p-1.5 shadow-[0px_12px_20px_0px_rgba(0,0,0,0.14),0px_4px_24px_0px_rgba(0,0,0,0.12)]"
+      >
+        <div
+          v-for="(question, index) in props.questions"
+          :key="index"
+          @click="setType(index)"
+          class="w-full py-[14px] px-1.5 cursor-pointer"
+        >
+          <label
+            class="font-normal leading-6 font-compact text-17 text-txt"
+            :for="'option-' + index"
+            >{{ question.txt
+            }}<input
+              type="radio"
+              name="option"
+              class="hidden"
+              :id="'option-' + index"
+          /></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import ChevronDown from "@/components/icons/ChevronDown.vue";
+
+const props = defineProps({
+  selectQuestion: Function,
+  questions: Array,
+});
+
+const isSet = ref(false);
+const isDropdownShown = ref(false);
+const dropdownOption = ref("");
+
+function toggleDropdown() {
+  isDropdownShown.value = !isDropdownShown.value;
+}
+
+function setType(value) {
+  isSet.value = true;
+  dropdownOption.value = value;
+  props.selectQuestion(value);
+}
+</script>

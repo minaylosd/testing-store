@@ -43,6 +43,21 @@ const router = new VueRouter({
       name: 'report',
       component: () => import('../views/TestReportView.vue')
     },
+    {
+      path: '/ux-ui-tests',
+      name: 'UX/UI Tests',
+      component: () => import('../views/UXUITestsView.vue')
+    },
+    {
+      path: '/launch-test',
+      name: 'Launch Test',
+      component: () => import('../views/LaunchTestsView.vue')
+    },
+    {
+      path: '/moderator',
+      name: 'Moderator',
+      component: () => import('../views/ModeratorView.vue')
+    },
   ]
 })
 

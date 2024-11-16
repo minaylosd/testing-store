@@ -90,7 +90,13 @@
     </div>
 
     <button
-      class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-inactive rounded-2xl bg-white mb-[14px]"
+      @click="props.openOperators"
+      :class="
+        props.tests.length > 0
+          ? 'bg-brand text-white'
+          : 'bg-white text-inactive'
+      "
+      class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide rounded-2xl mb-[14px]"
     >
       Настроить условные операторы
     </button>
@@ -117,6 +123,11 @@
 import { ref } from "vue";
 import InfoIcon from "../components/icons/InfoIcon.vue";
 import Coin from "../components/icons/Coin.vue";
+
+const props = defineProps({
+  openOperators: Function,
+  tests: Array,
+});
 
 const isFormFilled = ref(false);
 </script>

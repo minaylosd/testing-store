@@ -89,7 +89,7 @@
 
 <script setup>
 import { ref } from "vue";
-import ChevronDown from "./icons/ChevronDown.vue";
+import ChevronDown from "@/components/icons/ChevronDown.vue";
 
 const isDropdownShown = ref(false);
 const answers = ref(["Отдыхать", "Веселиться"]);

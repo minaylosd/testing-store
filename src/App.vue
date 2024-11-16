@@ -1,12 +1,14 @@
 <template>
-  <div id="app" class="flex flex-col">
+  <div id="app" class="flex flex-col min-h-lvh">
     <AppHeader
       :overlayVisible="overlayVisible"
-      @toggle-overlay="toggleOverlayVisibility" />
+      @toggle-overlay="toggleOverlayVisibility"
+    />
     <Menu v-if="isMenuOpen == true" />
     <Overlay v-if="overlayVisible" @close="toggleOverlayVisibility" />
-    <router-view />
-    <AppFooter />
+    <router-view class="grow" />
+    <!-- <AppFooter /> -->
+    <SmallFooter />
   </div>
 </template>
 
@@ -16,6 +18,7 @@ import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
 import Overlay from "./components/Overlay.vue";
 import Menu from "./components/Menu.vue";
+import SmallFooter from "./components/SmallFooter.vue";
 
 const isMenuOpen = ref(false);
 const toggleMenu = () => {
