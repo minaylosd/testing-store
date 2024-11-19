@@ -2,7 +2,7 @@
   <div>
     <div
       @click="toggleDropdown"
-      class="relative flex w-full items-center px-3 py-3.5 border rounded-2xl border-divider/50 bg-tertiary cursor-pointer"
+      class="relative flex w-full items-center px-3 py-[13px] border rounded-2xl border-divider/50 bg-tertiary cursor-pointer"
     >
       <span
         class="flex w-full font-normal leading-6 font-compact text-17 text-greytxt bg-tertiary"
