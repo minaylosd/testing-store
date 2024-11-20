@@ -22,38 +22,65 @@
         <h3 class="text-xl font-medium leading-6 text-txt font-wide">
           Демография
         </h3>
-
         <div>
           <label
             class="block mb-1 text-sm font-normal font-compact text-greytxt"
-            >Пол</label
           >
+            Пол
+          </label>
           <div class="grid grid-cols-3 gap-4">
             <label
-              class="flex flex-col items-center justify-center gap-1 text-sm font-normal border rounded-2xl bg-tertiary border-divider/50 h-30 font-compact text-txt"
-              for="sex-both"
+              :class="[
+                'flex flex-col items-center justify-center gap-1 text-sm font-normal border rounded-2xl h-30 font-compact cursor-pointer',
+                selectedSex === 'both' ? 'border-brand' : 'border-divider/50',
+              ]"
             >
               <img class="h-13 w-13" src="/icons/sex-both.svg" alt="" />
               Все
-              <input type="radio" class="hidden" id="sex-both" />
+              <input
+                type="radio"
+                class="hidden"
+                id="sex-both"
+                name="sex"
+                value="both"
+                v-model="selectedSex"
+              />
             </label>
 
             <label
-              class="flex flex-col items-center justify-center gap-1 text-sm font-normal border rounded-2xl bg-tertiary border-divider/50 h-30 font-compact text-txt"
-              for="sex-both"
+              :class="[
+                'flex flex-col items-center justify-center gap-1 text-sm font-normal border rounded-2xl h-30 font-compact cursor-pointer',
+                selectedSex === 'female' ? 'border-brand' : 'border-divider/50',
+              ]"
             >
               <img class="h-13 w-13" src="/icons/sex-female.svg" alt="" />
               Женщины
-              <input type="radio" class="hidden" id="sex-female" />
+              <input
+                type="radio"
+                class="hidden"
+                id="sex-female"
+                name="sex"
+                value="female"
+                v-model="selectedSex"
+              />
             </label>
 
             <label
-              class="flex flex-col items-center justify-center gap-1 text-sm font-normal border rounded-2xl bg-tertiary border-divider/50 h-30 font-compact text-txt"
-              for="sex-both"
+              :class="[
+                'flex flex-col items-center justify-center gap-1 text-sm font-normal border rounded-2xl h-30 font-compact cursor-pointer',
+                selectedSex === 'male' ? 'border-brand' : 'border-divider/50',
+              ]"
             >
               <img class="h-13 w-13" src="/icons/sex-male.svg" alt="" />
               Мужчины
-              <input type="radio" class="hidden" id="sex-male" />
+              <input
+                type="radio"
+                class="hidden"
+                id="sex-male"
+                name="sex"
+                value="male"
+                v-model="selectedSex"
+              />
             </label>
           </div>
         </div>
@@ -85,9 +112,11 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { ref } from "vue";
 import DropdownInput from "@/components/DropdownInput.vue";
 
 const isActive = ref(true);
+const selectedSex = ref(null);
 </script>
