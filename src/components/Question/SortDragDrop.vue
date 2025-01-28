@@ -54,7 +54,9 @@
           class="grid grid-cols-3 gap-4 border border-solid rounded-3xl border-divider/50 min-h-[528px]"
         >
           <div
-            class="flex flex-col justify-between h-full px-8 py-4 border-r border-solid grow border-divider/50"
+            v-for="(group, index) in groups"
+            :class="index != groups.length - 1 ? 'border-r' : ''"
+            class="flex flex-col justify-between h-full px-8 py-4 border-solid grow border-divider/50"
           >
             <div class="flex flex-col h-full gap-4">
               <div v-if="openType">
@@ -75,134 +77,18 @@
                 v-else
                 class="font-medium leading-6 text-left text-txt font-compact text-17"
               >
-                Животные
+                {{ group.name }}
               </p>
 
               <draggable
                 @change="log"
-                :list="groups[0].list"
+                :list="groups[index].list"
                 group="items"
                 class="flex flex-col min-h-full gap-4 h-fit grow"
               >
                 <div
-                  v-for="(item, index) in groups[0].list"
-                  :key="index"
-                  class="rounded-[20px] bg-tertiary p-4 flex flex-col gap-4"
-                >
-                  <img
-                    class="object-cover w-full h-auto rounded-[10px]"
-                    :src="item.img"
-                    :alt="item.name"
-                  />
-                  <p
-                    class="font-normal leading-6 font-compact text-17 text-txt"
-                  >
-                    {{ item.name }}
-                  </p>
-                </div>
-              </draggable>
-            </div>
-
-            <button
-              v-if="openType"
-              class="bg-tertiary p-2.5 rounded-2xl w-11 h-11 mt-4"
-            >
-              <img src="/icons/delete.svg" alt="" />
-            </button>
-          </div>
-
-          <div
-            class="flex flex-col justify-between h-full px-8 py-4 border-r border-solid grow border-divider/50"
-          >
-            <div class="flex flex-col h-full gap-4">
-              <div v-if="openType">
-                <label
-                  for="category-1"
-                  class="block mb-1 text-sm font-normal font-compact text-greytxt"
-                  >Назовите категорию</label
-                >
-                <input
-                  type="text"
-                  id="category-1"
-                  placeholder="Напр., люди"
-                  class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
-                  required
-                />
-              </div>
-              <p
-                v-else
-                class="font-medium leading-6 text-left text-txt font-compact text-17"
-              >
-                Животные
-              </p>
-
-              <draggable
-                @change="log"
-                :list="groups[1].list"
-                group="items"
-                class="flex flex-col min-h-full gap-4 h-fit grow"
-              >
-                <div
-                  v-for="(item, index) in groups[1].list"
-                  :key="index"
-                  class="rounded-[20px] bg-tertiary p-4 flex flex-col gap-4"
-                >
-                  <img
-                    class="object-cover w-full h-auto rounded-[10px]"
-                    :src="item.img"
-                    :alt="item.name"
-                  />
-                  <p
-                    class="font-normal leading-6 font-compact text-17 text-txt"
-                  >
-                    {{ item.name }}
-                  </p>
-                </div>
-              </draggable>
-            </div>
-
-            <button
-              v-if="openType"
-              class="bg-tertiary p-2.5 rounded-2xl w-11 h-11 mt-4"
-            >
-              <img src="/icons/delete.svg" alt="" />
-            </button>
-          </div>
-
-          <div
-            class="flex flex-col justify-between h-full px-8 py-4 border-r border-solid grow border-divider/50"
-          >
-            <div class="flex flex-col h-full gap-4">
-              <div v-if="openType">
-                <label
-                  for="category-1"
-                  class="block mb-1 text-sm font-normal font-compact text-greytxt"
-                  >Назовите категорию</label
-                >
-                <input
-                  type="text"
-                  id="category-1"
-                  placeholder="Напр., люди"
-                  class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
-                  required
-                />
-              </div>
-              <p
-                v-else
-                class="font-medium leading-6 text-left text-txt font-compact text-17"
-              >
-                Животные
-              </p>
-
-              <draggable
-                @change="log"
-                :list="groups[2].list"
-                group="items"
-                class="flex flex-col min-h-full gap-4 h-fit grow"
-              >
-                <div
-                  v-for="(item, index) in groups[2].list"
-                  :key="index"
+                  v-for="(item, indexList) in groups[index].list"
+                  :key="indexList"
                   class="rounded-[20px] bg-tertiary p-4 flex flex-col gap-4"
                 >
                   <img
@@ -228,8 +114,8 @@
           </div>
         </div>
       </div>
-
       <button
+        @click="$emit('answer')"
         :class="[
           'px-[22px] py-[18px] text-xs font-bold tracking-wider uppercase font-wide rounded-2xl self-end',
           !unsorted.length == 0
