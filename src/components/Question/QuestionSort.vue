@@ -43,7 +43,8 @@
       </button>
     </div>
   </div>
-  <div
+  <SortDragDrop v-else-if="stage == 'question'" />
+  <!-- <div
     v-else-if="stage == 'question'"
     class="flex flex-col items-center w-full px-11 pt-4 pb-8 min-h-[796px] bg-white rounded-3xl"
   >
@@ -236,11 +237,12 @@
         Продолжить
       </button>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script setup>
 import { ref } from "vue";
+import SortDragDrop from "./SortDragDrop.vue";
 
 const stage = ref("start");
 const openType = ref(true);

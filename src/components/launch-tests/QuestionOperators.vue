@@ -138,7 +138,7 @@
         :questions="props.allQuestions"
       />
     </div>
-    <div class="flex items-center justify-between h-full">
+    <div class="flex items-start pt-[28px] justify-between h-full">
       <input
         type="checkbox"
         id="active"

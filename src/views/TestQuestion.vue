@@ -24,6 +24,6 @@ import QuestionFirstClick from "@/components/Question/QuestionFirstClick.vue";
 import QuestionPrototype from "@/components/Question/QuestionPrototype.vue";
 import QuestionOpenQuestion from "@/components/Question/QuestionOpenQuestion.vue";
 
-const currentTest = ref("open");
+const currentTest = ref("sort");
 const useEmoji = ref(false);
 </script>
