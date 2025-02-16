@@ -11,27 +11,12 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/balance',
-      name: 'balance',
-      component: () => import('../views/BalanceHistoryView.vue')
-    },
-    {
-      path: '/purchases',
-      name: 'purchases',
-      component: () => import('../views/PurchasesHistoryView.vue')
+      component: () => import('../views/LaunchTestsView.vue')
     },
     {
       path: '/product',
       name: 'product',
       component: () => import('../views/ProductView.vue')
-    },
-    {
-      path: '/tests',
-      name: 'tests',
-      component: () => import('../views/TestsView.vue')
     },
     {
       path: '/question',
@@ -47,11 +32,6 @@ const router = new VueRouter({
       path: '/ux-ui-tests',
       name: 'UX/UI Tests',
       component: () => import('../views/UXUITestsView.vue')
-    },
-    {
-      path: '/launch-test',
-      name: 'Launch Test',
-      component: () => import('../views/LaunchTestsView.vue')
     },
     {
       path: '/moderator',

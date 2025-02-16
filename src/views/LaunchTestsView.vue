@@ -1,6 +1,6 @@
 <template>
   <main class="w-full min-h-full pb-16 pt-25 bg-tertiary grow">
-    <div class="px-4 mx-auto md:px-20 max-w-none md:max-w-388 2xl:px-9">
+    <div class="px-4 mx-auto max-w-none md:max-w-[1400px] md:px-9">
       <div v-if="!isConstructorOpened">
         <TestStatusList v-if="testList.length > 0" :list="testList" />
         <div v-else>
