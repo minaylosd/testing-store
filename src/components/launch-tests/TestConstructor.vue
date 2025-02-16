@@ -1,12 +1,12 @@
 <template>
-  <section class="w-full md:px-6">
+  <section class="w-full">
     <h1
       class="mb-8 text-4xl font-medium text-black md:leading-none font-wide md:text-heading"
     >
-      Запуск тестов
+      Запуск быстрых UX/UI тестов
     </h1>
 
-    <div class="grid grid-cols-[1fr_2fr] gap-6">
+    <div class="grid grid-cols-[400px_auto] gap-6">
       <TestOptions :openOperators="openOperators" :tests="tests" />
       <div class="flex flex-col gap-8">
         <div
