@@ -3,7 +3,7 @@
     class="fixed top-0 left-0 z-30 w-full bg-white lg:shadow-shadow py-[9px]"
   >
     <div
-      class="flex items-center justify-between px-5 mx-auto lg:px-20 2xl:px-9 max-w-[360px] md:max-w-388"
+      class="flex items-center justify-between px-5 mx-auto md:px-9 max-w-[360px] md:max-w-[1400px]"
     >
       <router-link
         class="flex items-center gap-2.5 font-compact text-xl leading-6 text-txt font-normal"
