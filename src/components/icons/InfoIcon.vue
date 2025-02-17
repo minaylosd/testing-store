@@ -1,5 +1,18 @@
 <template>
-  <svg
+   <svg v-if="props.small" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="3" width="18" height="18" rx="6.54545" fill="white"/>
+    <rect x="3" y="3" width="18" height="18" rx="6.54545" fill="#F2F3F7"/>
+    <g clip-path="url(#clip0_3728_23792)">
+      <path d="M11.7255 7.63574C11.2736 7.63574 10.9073 8.00205 10.9073 8.45392C10.9073 8.90579 11.2736 9.27211 11.7255 9.27211C12.1774 9.27211 12.5437 8.90579 12.5437 8.45392C12.5437 8.00205 12.1774 7.63574 11.7255 7.63574Z" fill="#1D2023"/>
+      <path d="M11.4528 15.8176C11.4528 16.1188 11.697 16.363 11.9982 16.363C12.2995 16.363 12.5437 16.1188 12.5437 15.8176V10.9085C12.5437 10.6072 12.2995 10.363 11.9982 10.363H10.3619C10.0606 10.363 9.81641 10.6072 9.81641 10.9085C9.81641 11.2097 10.0606 11.4539 10.3619 11.4539H11.4528V15.8176Z" fill="#1D2023"/>
+    </g>
+    <defs>
+      <clipPath id="clip0_3728_23792">
+        <rect width="13.0909" height="13.0909" fill="white" transform="translate(5.45312 5.4541)"/>
+      </clipPath>
+    </defs>
+  </svg>
+  <svg v-else
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -29,3 +42,9 @@
     </defs>
   </svg>
 </template>
+
+<script setup>
+const props = defineProps({
+  small: Boolean
+})
+</script>
