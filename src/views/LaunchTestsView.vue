@@ -43,23 +43,26 @@ import { ref } from "vue";
 import TestConstructor from "@/components/launch-tests/TestConstructor.vue";
 import TestStatusList from "@/components/launch-tests/TestStatusList.vue";
 
-const isConstructorOpened = ref(true);
+const isConstructorOpened = ref(false);
 
 const openConstructor = () => {
   isConstructorOpened.value = true;
 };
 
+// const testList = ref([
+//   {
+//     name: "Открытый вопрос",
+//     description: "Описание к тесту «Открытый вопрос»",
+//     status: "active",
+//   },
+//   {
+//     name: "Предпочтение",
+//     description: "Описание к тесту «Предпочтение»",
+//     status: "moderation",
+//   },
+//   { name: "Шкала", description: "Описание к тесту «Шкала»", status: "failed" },
+// ]);
 const testList = ref([
-  {
-    name: "Открытый вопрос",
-    description: "Описание к тесту «Открытый вопрос»",
-    status: "active",
-  },
-  {
-    name: "Предпочтение",
-    description: "Описание к тесту «Предпочтение»",
-    status: "moderation",
-  },
-  { name: "Шкала", description: "Описание к тесту «Шкала»", status: "failed" },
+
 ]);
 </script>
