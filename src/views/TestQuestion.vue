@@ -1,6 +1,6 @@
 <template>
   <main class="w-full pb-16 min-h-lvh h-fit pt-25 bg-tertiary">
-    <div class="px-4 mx-auto md:px-20 max-w-none md:max-w-388 2xl:px-9">
+    <div class="px-4 mx-auto max-w-none md:max-w-[1400px] md:px-9">
       <QuestionOpenQuestion v-if="currentTest == 'open'" />
       <QuestionScale v-else-if="currentTest == 'scale'" :useEmoji="useEmoji" />
       <QuestionAudio v-else-if="currentTest == 'audio'" />

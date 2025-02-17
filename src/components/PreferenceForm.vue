@@ -18,8 +18,7 @@
 
     <div class="flex flex-col gap-4">
       <FileInput v-for="(item, index) in displayedFileInputs" :key="index" :style="{ order: index }" :data-id="index"
-        @file-upload="(file) => addFile(file, index)" @file-remove="removeFile(index)"
-        label="Формат файла: JPG, GIF, MP3, MP4" />
+        @file-upload="(file) => addFile(file, index)" @file-remove="removeFile(index)" />
     </div>
 
     <div class="w-full">
