@@ -8,10 +8,10 @@
 
     <div class="grid grid-cols-[400px_auto] gap-6">
       <TestOptions :openOperators="openOperators" :tests="tests" />
-      <div class="flex flex-col gap-8">
+      <div class="flex flex-col">
         <div
           v-if="tests.length > 0 && testsVisible"
-          class="flex flex-col gap-8"
+          class="flex flex-col gap-8 mb-8"
         >
           <TestForm v-for="(test, index) in tests" :test="test" :key="index" />
           <button
@@ -21,12 +21,12 @@
             Свернуть
           </button>
         </div>
-        <form class="grid grid-cols-2 gap-6">
+        <form class="grid grid-cols-2 gap-6 mb-10">
           <div
             v-for="(variant, index) in variants"
             @click="selectTest(variant.name)"
             :key="index"
-            class="p-5 bg-white border border-solid rounded-3xl border-divider/50"
+            class="p-5 bg-white outline outline-1 rounded-3xl outline-divider/50"
           >
             <input
               type="radio"
@@ -114,7 +114,7 @@ const variants = ref([
   },
   {
     name: "sort",
-    heading: "Сортировка карточек",
+    heading: "Сортировка",
     text: "Посмотрите как пользователи группируют контент",
   },
   {
