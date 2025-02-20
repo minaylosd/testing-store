@@ -14,7 +14,7 @@
       <ChevronDown />
 
       <div
-        v-if="isDropdownShown"
+        v-if="isDropdownShown && props.options.length == 0"
         class="absolute z-10 left-0 w-full bg-white top-full translate-y-1 rounded-2xl p-1.5 shadow-[0px_12px_20px_0px_rgba(0,0,0,0.14),0px_4px_24px_0px_rgba(0,0,0,0.12)]"
       >
         <div
@@ -36,6 +36,23 @@
             class="font-normal leading-6 font-compact text-17 text-txt"
             for="closed"
             >Option 2<input type="radio" class="hidden" id="closed"
+          /></label>
+        </div>
+      </div>
+
+      <div
+        v-if="isDropdownShown && props.options.length > 0"
+        class="absolute z-10 left-0 w-full bg-white top-full translate-y-1 rounded-2xl p-1.5 shadow-[0px_12px_20px_0px_rgba(0,0,0,0.14),0px_4px_24px_0px_rgba(0,0,0,0.12)]"
+      >
+        <div v-for="(option, index) in props.options"
+        :key="index"
+          @click="setType(option.label)"
+          class="w-full py-[14px] px-1.5 cursor-pointer"
+        >
+          <label
+            class="font-normal leading-6 font-compact text-17 text-txt"
+            :for="`option-${option.value}`"
+            >{{ option.label }}<input type="radio" class="hidden" :id="`option-${option.value}`"
           /></label>
         </div>
       </div>
