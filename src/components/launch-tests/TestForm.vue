@@ -10,7 +10,6 @@
 </template>
 
 <script setup>
-import TestOptions from "@/components/TestOptions.vue";
 import ScaleForm from "@/components/ScaleForm.vue";
 import PreferenceForm from "@/components/PreferenceForm.vue";
 import AudioForm from "@/components/AudioForm.vue";
