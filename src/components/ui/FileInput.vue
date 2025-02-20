@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label v-if="!file" for="fileInput" class="block mb-1 text-sm font-normal font-compact text-greytxt">Формат файла: JPG, GIF, MP3, MP4</label>
+        <label v-if="!file" for="fileInput" class="block mb-1 text-sm font-normal font-compact text-greytxt">JPG, JPEG, PNG, GIF, MP3, WAV, OGG, MP4, AVI</label>
         <div :class="[
             'flex flex-col items-center justify-center w-full mx-auto border-divider/50 bg-tertiary border cursor-pointer rounded-2xl',
             file ? 'border-solid p-1.5' : 'border-dashed px-4 py-3',
@@ -48,8 +48,10 @@
             </div>
         </div>
         <p v-if="!file" class="block mt-1 text-xs font-normal font-compact text-greytxt">
-            GIF, MP3, MP4 длительностью до 1 минуты и весом не более 50мб. Для изображений вес до 5 МБ и разрешением
-            16000x16000
+            Аудио и видео форматы длительностью до 1 минуты и весом не более 50мб. Для изображений вес до 5 МБ и разрешением 16000x16000
+        </p>
+        <p v-if="fileInvalid" class="block text-xs font-normal font-compact text-[#d8400c]">
+            Вес файла превышен
         </p>
     </div>
 
@@ -62,6 +64,7 @@ import FileIcon from "@/components/icons/FileIcon.vue";
 const fileInput = ref(null);
 const file = ref(null);
 const previewUrl = ref(null);
+const fileInvalid = ref(false);
 
 const emit = defineEmits(["file-upload", "file-remove"]);
 
@@ -74,19 +77,56 @@ function fileInputClick() {
 }
 
 function handleFileUpload(event) {
-    if (event.target.files && event.target.files[0]) {
-        file.value = event.target.files[0];
-        updatePreview();
-        emit("file-upload", file.value);
-    }
+    const files = event.target?.files;
+    if (!files || !files[0]) return;
+    validateFile(files[0]);
 }
 
 function handleDrop(event) {
     if (event.dataTransfer.files && event.dataTransfer.files[0]) {
-        file.value = event.dataTransfer.files[0];
-        updatePreview();
-        emit("file-upload", file.value);
+        validateFile(event.dataTransfer.files[0]);
     }
+}
+
+function validateFile(selectedFile) {
+    fileInvalid.value = false;
+    if (selectedFile.type.startsWith("image/")) {
+        if (selectedFile.size > 5 * 1024 * 1024) {
+            fileInvalid.value = true;
+            return;
+        }
+        const img = new Image();
+        img.src = URL.createObjectURL(selectedFile);
+        img.onload = () => {
+            if (img.width > 16000 || img.height > 16000) {
+                fileInvalid.value = true;
+            } else {
+                setFile(selectedFile);
+            }
+        };
+    } else if (selectedFile.type.startsWith("audio/") || selectedFile.type.startsWith("video/")) {
+        if (selectedFile.size > 50 * 1024 * 1024) {
+            fileInvalid.value = true;
+            return;
+        }
+        const media = document.createElement(selectedFile.type.startsWith("audio/") ? "audio" : "video");
+        media.src = URL.createObjectURL(selectedFile);
+        media.onloadedmetadata = () => {
+            if (media.duration > 60) {
+                fileInvalid.value = true;
+            } else {
+                setFile(selectedFile);
+            }
+        };
+    } else {
+        setFile(selectedFile);
+    }
+}
+
+function setFile(selectedFile) {
+    file.value = selectedFile;
+    updatePreview();
+    emit("file-upload", file.value);
 }
 
 function clearFile() {
