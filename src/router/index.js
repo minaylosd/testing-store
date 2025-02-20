@@ -38,6 +38,18 @@ const router = new VueRouter({
       name: 'Moderator',
       component: () => import('../views/ModeratorView.vue')
     },
+    {
+      path: '/moderator/edit/:id',
+      name: 'Edit test',
+      component: () => import('../views/EditTest.vue'),
+      props: true
+    },
+    {
+      path: '/moderator/test/:id',
+      name: 'Test Details',
+      component: () => import('../views/ModeratorTestDetails.vue'),
+      props: true
+    }
   ]
 })
 
