@@ -17,7 +17,7 @@
     </div>
 
     <div class="flex flex-col gap-4">
-      <FileInput v-for="(item, index) in displayedFileInputs" :key="index" :style="{ order: index }" :data-id="index"
+      <FileInput v-for="(item, index) in displayedFileInputs" :key="index" :style="{ order: index }" 
         @file-upload="(file) => addFile(file, index)" @file-remove="removeFile(index)" />
     </div>
 
@@ -104,26 +104,22 @@ const displayedFileInputs = computed(() => [...filesArr.value, null]);
 
 function addFile(file, index) {
   console.log(index);
-  const name = filesArr.value[index]?.name? filesArr.value[index].name : null;
+
   newFile.value = {
     file: file,
-    name: name,
+    name: null,
   };
-  if (index < filesArr.value.length) {
-    filesArr.value[index] = newFile.value;
+ 
+  if (index <= filesArr.value.length) {
+    filesArr.value = filesArr.value.toSpliced(index, 0, newFile.value);
   } else {
     filesArr.value = [...filesArr.value, newFile.value];
   }
-
   console.log(filesArr.value);
 }
 
 function removeFile(index) {
-  if (index < filesArr.value.length) {
-    filesArr.value[index].file = null;
-  } else {
-    filesArr.value = filesArr.value.filter((_, i) => i !== index);
-  }
+  filesArr.value = filesArr.value.toSpliced(index, 1);
   console.log(filesArr.value);
 }
 
