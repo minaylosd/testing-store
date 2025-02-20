@@ -43,11 +43,11 @@
                     </div>
                 </div>
                 <p v-else class="font-normal w-full leading-5 font-compact text-[#0070e5] text-17">
-                    Прикрепите файл
+                    Прикрепить файл
                 </p>
             </div>
         </div>
-        <p v-if="!file" class="block mt-1 text-sm font-normal font-compact text-greytxt">
+        <p v-if="!file" class="block mt-1 text-xs font-normal font-compact text-greytxt">
             GIF, MP3, MP4 длительностью до 1 минуты и весом не более 50мб. Для изображений вес до 5 МБ и разрешением
             16000x16000
         </p>
@@ -63,10 +63,6 @@ const fileInput = ref(null);
 const file = ref(null);
 const previewUrl = ref(null);
 
-const props = defineProps({
-    id: Number,
-});
-
 const emit = defineEmits(["file-upload", "file-remove"]);
 
 const isImage = computed(() => {
@@ -81,7 +77,7 @@ function handleFileUpload(event) {
     if (event.target.files && event.target.files[0]) {
         file.value = event.target.files[0];
         updatePreview();
-        emit("file-upload", file.value, props.id);
+        emit("file-upload", file.value);
     }
 }
 
@@ -89,7 +85,7 @@ function handleDrop(event) {
     if (event.dataTransfer.files && event.dataTransfer.files[0]) {
         file.value = event.dataTransfer.files[0];
         updatePreview();
-        emit("file-upload", file.value, props.id);
+        emit("file-upload", file.value);
     }
 }
 
@@ -97,7 +93,7 @@ function clearFile() {
     file.value = null;
     previewUrl.value = null;
     fileInput.value.value = "";
-    emit("file-remove", props.id);
+    emit("file-remove");
 }
 
 function updatePreview() {
