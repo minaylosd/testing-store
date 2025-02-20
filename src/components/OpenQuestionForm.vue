@@ -14,57 +14,32 @@
       </button>
     </div>
 
-    <div class="flex flex-col w-full h-full gap-1">
-      <div
-        class="flex-col gap-1 h-[264px] justify-center items-center flex px-4 py-6 bg-[#f2f3f7] rounded-[20px] border border-dashed border-divider/50"
-      >
-        <p
-          class="flex flex-col font-normal leading-normal text-center text-txt text-17 font-compact"
-        >
-          Переместите файл сюда или
-          <span
-            class="text-[#0070e5] text-17 font-normal font-compact leading-normal"
-          >
-            загрузите вручную
-          </span>
-        </p>
-        <p
-          class="text-xs font-normal leading-none text-center text-greytxt font-compact"
-        >
-          Формат файла: JPG, GIF, MP3, MP4
-        </p>
-      </div>
-      <p class="text-xs font-normal leading-none text-greytxt font-compact">
-        GIF, MP3, MP4 длительностью до 1 минуты и весом не более 50мб. Для
-        изображений вес до 5 МБ и разрешением 16000x16000
-      </p>
+    <div class="flex flex-col gap-4">
+      <FileInput v-for="(item, index) in displayedFileInputs" :key="index" :style="{ order: index }"
+        @file-upload="(file) => addFile(file, index)" @file-remove="removeFile(index)" />
     </div>
 
     <div class="w-full">
-      <label
-        for="question"
-        class="block mb-1 text-sm font-normal font-compact text-greytxt"
-        >Вопрос</label
-      >
-      <input
-        type="text"
-        id="question"
-        placeholder="Введите текст вопроса"
+      <label for="question" class="block mb-1 text-sm font-normal font-compact text-greytxt">Вопрос</label>
+      <input type="text" id="question" placeholder="Введите текст вопроса"
+        :value="props.testObj ? props.testObj.txt : ''"
         class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-tertiary mb-2"
-        required
-      />
+        required />
 
-      <input
-        type="checkbox"
-        id="required-question"
-        checked
-        class="option custom-checkbox"
-      />
-      <label
-        for="required-question"
-        class="flex items-center w-full gap-2 mb-4 font-normal leading-6 font-compact text-17 text-txt"
-        >Необязательный вопрос</label
-      >
+      <input type="checkbox" id="required-question" :checked="props.testObj?.required" class="option custom-checkbox" />
+      <label for="required-question"
+        class="flex items-center w-full gap-2 mb-4 font-normal leading-6 font-compact text-17 text-txt">Необязательный
+        вопрос</label>
+
+      <input type="checkbox" id="respondent-comment" :checked="props.testObj?.comment" class="option custom-checkbox" />
+      <label for="respondent-comment"
+        class="flex items-center w-full gap-2 mb-4 font-normal leading-6 font-compact text-17 text-txt">Добавить поле
+        "Комментарий" для респондентов</label>
+
+      <input type="checkbox" id="comment-required" :checked="props.testObj?.commentRequired" class="option custom-checkbox" />
+      <label for="comment-required"
+        class="flex items-center w-full gap-2 font-normal leading-6 font-compact text-17 text-txt">Обязательный
+        комментарий</label>
     </div>
   </form>
 </template>
@@ -76,13 +51,14 @@
   opacity: 0;
 }
 
-.custom-checkbox + label {
+.custom-checkbox+label {
   display: inline-flex;
   align-items: center;
   user-select: none;
   cursor: pointer;
 }
-.custom-checkbox + label::before {
+
+.custom-checkbox+label::before {
   content: "";
   background-image: url("/icons/Checkbox-unchecked.svg");
   background-repeat: no-repeat;
@@ -93,7 +69,39 @@
   min-height: 24px;
 }
 
-.custom-checkbox:checked + label::before {
+.custom-checkbox:checked+label::before {
   background-image: url("/icons/Checkbox-checked.svg");
 }
 </style>
+
+<script setup>
+import { ref, computed } from "vue";
+import FileInput from './ui/FileInput.vue';
+
+const props = defineProps({
+  testObj: Object,
+})
+
+const filesArr = ref(props.testObj?.files || []);
+const newFile = ref(null);
+
+const displayedFileInputs = computed(() => [...filesArr.value, null]);
+
+function addFile(file, index) {
+  const name = filesArr.value[index]?.name ? filesArr.value[index].name : null;
+  newFile.value = {
+    file: file,
+    name: null,
+  };
+
+  if (index <= filesArr.value.length) {
+    filesArr.value = filesArr.value.toSpliced(index, 0, newFile.value);
+  } else {
+    filesArr.value = [...filesArr.value, newFile.value];
+  }
+}
+
+function removeFile(index) {
+  filesArr.value = filesArr.value.toSpliced(index, 1);
+}
+</script>
