@@ -35,7 +35,7 @@ const testList = ref([
     author: "Константин",
     creationDate: "04.10.2024",
     lastUpdateDate: "04.10.2024",
-    status: "passed",
+    status: "active",
   },
   {
     name: "Выбор",
@@ -56,7 +56,7 @@ const testList = ref([
     author: "Константин",
     creationDate: "04.10.2024",
     lastUpdateDate: "04.10.2024",
-    status: "failed",
+    status: "passed",
   },
 ]);
 </script>
