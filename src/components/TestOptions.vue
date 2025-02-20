@@ -1,10 +1,10 @@
 <template>
   <form class="flex flex-col w-full gap-6">
     <input type="text" id="name" placeholder="Название теста"
-      class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-white"
+      class="block w-full px-3 py-3.5 outline outline-1 outline-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-txt bg-white"
       required />
     <textarea type="text" id="description" placeholder="Описание теста"
-      class="block w-full px-3 py-3.5 border border-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-greytxt bg-white"
+      class="block w-full h-25 px-3 py-3.5 outline outline-1 outline-divider/50 font-compact font-normal text-17 leading-6 rounded-2xl text-txt bg-white"
       required></textarea>
 
     <div class="flex flex-col gap-4">
@@ -12,7 +12,7 @@
         ? 'bg-brand text-white'
         : 'bg-white text-inactive'
         "
-        class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide rounded-2xl mb-[14px]">
+        class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide rounded-2xl">
         Настройка логики теста
       </button>
 
@@ -30,7 +30,7 @@
 
     <div class="flex flex-col gap-4">
       <button
-        class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-inactive rounded-2xl bg-white mb-[14px]">
+        class="flex items-center justify-center w-full py-[18px] text-xs font-bold tracking-wider uppercase font-wide text-inactive rounded-2xl bg-white">
         Превью
       </button>
 
