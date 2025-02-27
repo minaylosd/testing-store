@@ -49,6 +49,11 @@ const router = new VueRouter({
       name: 'Test Details',
       component: () => import('../views/ModeratorTestDetails.vue'),
       props: true
+    },
+    {
+      path: '/audience',
+      name: 'Test Details',
+      component: () => import('../views/LaunchAudience.vue'),
     }
   ]
 })
